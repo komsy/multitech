@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('why_choose_us', function (Blueprint $table) {
+        Schema::create('testmonials', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('team_id');
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('CASCADE');
-            $table->string('icon',50);
-            $table->string('heading',100);
-            $table->longText('text');
+            $table->string('name',50);
+            $table->string('designation',50)->nullable();
+            $table->string('testmonialImage')->nullable();
+            $table->longText('testimonial');
+            $table->tinyInteger('testmonialStatus')->comment('0 for Inactive & 1 for Active')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('why_choose_us');
+        Schema::dropIfExists('testmonials');
     }
 };

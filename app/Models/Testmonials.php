@@ -4,19 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Filament\Models\Contracts\HasTenants;
-use Filament\Panel;
-use App\Models\Team;
 
-class WhyChooseUs extends Model //  implements  HasTenants
+class Testmonials extends Model
 {
     use HasFactory;
 
     public $fillable = [
-        //'team_id',
-        'icon',
-        'heading',
-        'text'
+        'team_id',
+        'name',
+        'designation',
+        'testimonial',
+        'testmonialImage',
+        'testmonialStatus'
     ];
 
  
@@ -24,5 +23,4 @@ class WhyChooseUs extends Model //  implements  HasTenants
     {
         return $this->belongsTo(Team::class);
     }
-    
 }

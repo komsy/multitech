@@ -39,6 +39,15 @@ class AppPanelProvider extends PanelProvider
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
+            ->userMenuItems([
+                MenuItem::make()
+                ->label('Admin')
+                // ->icon('heroin-o-cog-6-tooth')
+                ->url('/admin')
+               // ->url('/mpesaDashboard/public/admin')
+                ->visible(fn(): bool => auth()->user()->is_admin)
+                // ->visible(fn(): bool => auth()->user()->isAdmin())
+            ])
             ->favicon(asset('images/favicon.ico'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\WhyChooseUsResource\Pages;
-use App\Filament\Resources\WhyChooseUsResource\RelationManagers;
+use App\Filament\Admin\Resources\WhyChooseUsResource\Pages;
+use App\Filament\Admin\Resources\WhyChooseUsResource\RelationManagers;
 use App\Models\WhyChooseUs;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 
 class WhyChooseUsResource extends Resource
 {
@@ -30,15 +33,13 @@ class WhyChooseUsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('icon')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('heading')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('text')
-                    ->required()
-                    ->maxLength(255),
+                TextInput::make('icon')
+                    ->required()->maxLength(50),
+                TextInput::make('heading')
+                    ->required()->maxLength(100),
+                RichEditor::make('text'),
+                // TextInput::make('text')
+                //     ->required()->maxLength(255),
             ]);
     }
 
@@ -46,10 +47,11 @@ class WhyChooseUsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('heading')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('text')
-                    ->searchable(),
+                TextColumn::make('heading')->searchable(),
+                TextColumn::make('text')->searchable(),
+                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
+                TextColumn::make('updated_at')
+                ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
                 //
@@ -75,8 +77,8 @@ class WhyChooseUsResource extends Resource
     {
         return [
             'index' => Pages\ListWhyChooseUs::route('/'),
-            'create' => Pages\CreateWhyChooseUs::route('/create'),
-            'edit' => Pages\EditWhyChooseUs::route('/{record}/edit'),
+            // 'create' => Pages\CreateWhyChooseUs::route('/create'),
+            // 'edit' => Pages\EditWhyChooseUs::route('/{record}/edit'),
         ];
     }
 }

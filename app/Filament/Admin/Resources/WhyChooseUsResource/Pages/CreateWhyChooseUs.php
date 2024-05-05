@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\WhyChooseUsResource\Pages;
+namespace App\Filament\Admin\Resources\WhyChooseUsResource\Pages;
 
-use App\Filament\Resources\WhyChooseUsResource;
+use App\Filament\Admin\Resources\WhyChooseUsResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +15,7 @@ class CreateWhyChooseUs extends CreateRecord
     protected static string $resource = WhyChooseUsResource::class;
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['team_id'] = Filament::getTenant()->id;
+        //$data['team_id'] = Filament::getTenant()->id;
         //dd($data);
        
         return $data;

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Filament\Facades\Filament;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,5 +21,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+           // SET GLOBAL TOGGLE FOR STATUS
+           Filament::serving(function(){
+            \Filament\Tables\Columns\BooleanColumn::macro('toggle', function() {
+                $this->action(function($record, $column) {
+                    $name = $column->getName();
+                    $record->update([
+                        $name => !$record->$name
+                    ]);
+                });
+                return $this;
+            });
+        });
     }
 }
