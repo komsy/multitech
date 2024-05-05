@@ -24,4 +24,9 @@ class Team extends Model
     {
         return 'Active team';
     }
+
+    public function whyChooseUs()
+    {
+        return $this->hasMany(WhyChooseUs::class);
+    }
 }
