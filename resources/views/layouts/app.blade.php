@@ -19,7 +19,8 @@
             </div>
         <!-- Spinner End -->
         
-        @include('layouts.frontend.header')
+        @include('layouts.navbar')
+        @include('layouts.homepage.header')
         @yield('content')
  
         <!-- Scripts -->

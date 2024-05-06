@@ -20,4 +20,11 @@ class HomeController extends Controller
        // dd($testimonials);
         return view('frontend.welcome',compact('testimonials','whyChooseUs','projects','services'));
     }
+    public function about()
+    {
+
+       $whyChooseUs=WhyChooseUs::select('icon','heading','text')->get();
+       // dd($testimonials);
+        return view('frontend.about',compact('whyChooseUs'));
+    }
 }

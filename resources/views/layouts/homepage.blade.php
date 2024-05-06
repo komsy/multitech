@@ -19,6 +19,7 @@
             </div>
         <!-- Spinner End -->
         
+        @include('layouts.navbar')
         @include('layouts.frontend.header')
         @yield('content')
  

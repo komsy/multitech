@@ -16,9 +16,9 @@ use \App\Http\Controllers\HomeController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+// Route::get('/about', function () {
+//     return view('about');
+// })->name('about');
 
 Route::get('/service', function () {
     return view('service');
@@ -34,3 +34,4 @@ Route::get('/login', function () {
 });
 
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
