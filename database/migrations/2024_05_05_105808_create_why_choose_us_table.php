@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('why_choose_us', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('team_id');
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('CASCADE');
+            // $table->unsignedInteger('team_id');
+            // $table->foreign('team_id')->references('id')->on('teams')->onDelete('CASCADE');
             $table->string('icon',50);
             $table->string('heading',100);
             $table->longText('text');

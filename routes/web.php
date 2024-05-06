@@ -31,3 +31,5 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return redirect('/app/login');
 });
+
+Route::get('/', [HomePageController::class, 'index'])->name('sign-in');

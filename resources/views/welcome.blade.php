@@ -88,7 +88,7 @@
                 </div>
             </nav>
             
-        </div>
+        </div> 
         <!-- Navbar & Hero End -->
 
         <!-- Modal Search Start -->

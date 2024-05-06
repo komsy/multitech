@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class WhyChooseUsResource extends Resource
 {
@@ -33,8 +35,12 @@ class WhyChooseUsResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('icon')
-                    ->required()->maxLength(50),
+                FileUpload::make('icon')->label('Product Image')->image()->enableOpen()
+                    ->columns(1)->directory('testmonyImages')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                            ->prepend(now()->timestamp),
+                    ),
                 TextInput::make('heading')
                     ->required()->maxLength(100),
                 RichEditor::make('text'),
@@ -48,7 +54,7 @@ class WhyChooseUsResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('heading')->searchable(),
-                TextColumn::make('text')->searchable(),
+                TextColumn::make('text')->searchable()->html()->words(7),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
                 TextColumn::make('updated_at')
                 ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),

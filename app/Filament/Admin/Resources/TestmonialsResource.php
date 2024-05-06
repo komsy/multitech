@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class TestmonialsResource extends Resource
 {
@@ -33,8 +34,12 @@ class TestmonialsResource extends Resource
                     ->maxLength(55),
                 TextInput::make('designation')
                     ->maxLength(55)->default(null),
-                FileUpload::make('testmonialImage')->label('Product Image')->image()
-                    ->directory('testmonyImages'),
+                FileUpload::make('testmonialImage')->label('Product Image')->image()->enableOpen()
+                    ->columns(1)->directory('testmonyImages')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                            ->prepend(now()->timestamp),
+                    ),
                 RichEditor::make('testimonial')->required(),
                 // TextInput::make('testimonial')
                 //     ->required()->maxLength(255),
@@ -47,11 +52,11 @@ class TestmonialsResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->searchable(),
+                Tables\Columns\ImageColumn::make('testmonialImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Testmonial Image']),
                 TextColumn::make('designation')->searchable(),
-                TextColumn::make('testimonial')->searchable(),
-                Tables\Columns\ImageColumn::make('testmonialImage')->circular()->toggleable()->toggledHiddenByDefault()->extraImgAttributes(['title' => 'Testmonial Image']),
+                TextColumn::make('testimonial')->searchable()->label('Testimony')->html()->words(7),
                 Tables\Columns\BooleanColumn::make('testmonialStatus')->label('Is Active')->toggleable()->toggle(),
-                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
+                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('updated_at')
                 ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
