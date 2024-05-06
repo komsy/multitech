@@ -35,8 +35,8 @@ class WhyChooseUsResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('icon')->label('Product Image')->image()->enableOpen()
-                    ->columns(1)->directory('testmonyImages')
+                FileUpload::make('icon')->label('Icon')->image()->enableOpen()
+                    ->columns(1)->directory('whyChooseUsIcons')
                     ->getUploadedFileNameForStorageUsing(
                         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                             ->prepend(now()->timestamp),
@@ -53,6 +53,7 @@ class WhyChooseUsResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('icon')->label('Icon')->circular()->toggleable()->extraImgAttributes(['title' => 'Why choose Us Icon']),
                 TextColumn::make('heading')->searchable(),
                 TextColumn::make('text')->searchable()->html()->words(7),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),

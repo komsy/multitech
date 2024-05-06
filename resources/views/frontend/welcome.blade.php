@@ -251,33 +251,18 @@
                     <h2 class="display-4 text-capitalize mb-3">Why Choose Us</h2>
                 </div>
                 <div class="row g-4">
+                    @foreach ($whyChooseUs as $chooseUs)
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="feature-item text-center border p-5">
                             <div class="feature-img bg-secondary d-inline-flex p-4">
-                                <i class="fas fa-city text-primary fa-5x"></i>
+                                <img src="{{ asset('/storage/'.$chooseUs->icon)}}" class="img-fluid w-100" style="width: 100px; height: 100px;" alt="">
+                                {{-- <i class="fas fa-city text-primary fa-5x"></i> --}}
                             </div>
-                            <a href="#" class="h4 d-block my-4">Expert Engineer</a>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem provident incidunt obcaecati.</p>
+                            <a href="#" class="h4 d-block my-4">{{ $chooseUs->heading }}</a>
+                            <p class="mb-0">{!! html_entity_decode ( $chooseUs->text) !!} </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="feature-item text-center border p-5">
-                            <div class="feature-img bg-secondary d-inline-flex p-4">
-                                <i class="fas fa-funnel-dollar text-primary fa-5x"></i>
-                            </div>
-                            <a href="#" class="h4 d-block my-4">Free Estimates</a>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem provident incidunt obcaecati.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="feature-item text-center border p-5">
-                            <div class="feature-img bg-secondary d-inline-flex p-4">
-                                <i class="fas fa-tools text-primary fa-5x"></i>
-                            </div>
-                            <a href="#" class="h4 d-block my-4">Quality Materials</a>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem provident incidunt obcaecati.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -470,81 +455,32 @@
                     <h2 class="display-4 text-capitalize mb-3">Our clients reviews.</h2>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.4s">
+                    @foreach ($testimonials as $testimony)
                     <div class="testimonial-item bg-light p-4">
                         <div class="position-relative">
                             <i class="fa fa-quote-right fa-2x text-primary position-absolute" style="bottom: 30px; right: 0;"></i>
                             <div class="mb-4 pb-4 border-bottom border-secondary">
-                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                </p>
+                                <p class="mb-0"> {!! html_entity_decode ( $testimony->testimonial) !!} </p>
                             </div>
                             <div class="d-flex align-items-center flex-nowrap">
                                 <div class="me-4">
-                                    <img src="img/testimonial-1.jpg" class="img-fluid w-100" style="width: 100px; height: 100px;" alt="">
+                                    <img src="{{ asset('/storage/'.$testimony->testmonialImage)}}" class="img-fluid w-100" style="width: 100px; height: 100px;" alt="">
                                 </div>
                                 <div class="d-block">
-                                    <h4 class="text-dark">Client Name</h4>
-                                    <p class="m-0 pb-3">Profession</p>
-                                    <div class="d-flex text-secondary pe-5">
+                                    <h4 class="text-dark">{{ $testimony->name }} </h4>
+                                    <p class="m-0 pb-3">{{ $testimony->designation }}</p>
+                                    {{-- <div class="d-flex text-secondary pe-5">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star text-muted"></i>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-item bg-light p-4">
-                        <div class="position-relative">
-                            <i class="fa fa-quote-right fa-2x text-primary position-absolute" style="bottom: 30px; right: 0;"></i>
-                            <div class="mb-4 pb-4 border-bottom border-secondary">
-                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                </p>
-                            </div>
-                            <div class="d-flex align-items-center flex-nowrap">
-                                <div class="me-4">
-                                    <img src="img/testimonial-2.jpg" class="img-fluid w-100" style="width: 100px; height: 100px;" alt="">
-                                </div>
-                                <div class="d-block">
-                                    <h4 class="text-dark">Client Name</h4>
-                                    <p class="m-0 pb-3">Profession</p>
-                                    <div class="d-flex text-secondary pe-5">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-muted"></i>
-                                        <i class="fas fa-star text-muted"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light p-4">
-                        <div class="position-relative">
-                            <i class="fa fa-quote-right fa-2x text-primary position-absolute" style="bottom: 30px; right: 0;"></i>
-                            <div class="mb-4 pb-4 border-bottom border-secondary">
-                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                </p>
-                            </div>
-                            <div class="d-flex align-items-center flex-nowrap">
-                                <div class="me-4">
-                                    <img src="img/testimonial-3.jpg" class="img-fluid w-100" style="width: 100px; height: 100px;" alt="">
-                                </div>
-                                <div class="d-block">
-                                    <h4 class="text-dark">Client Name</h4>
-                                    <p class="m-0 pb-3">Profession</p>
-                                    <div class="d-flex text-secondary pe-5">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

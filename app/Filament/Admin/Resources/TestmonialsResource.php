@@ -34,7 +34,7 @@ class TestmonialsResource extends Resource
                     ->maxLength(55),
                 TextInput::make('designation')
                     ->maxLength(55)->default(null),
-                FileUpload::make('testmonialImage')->label('Product Image')->image()->enableOpen()
+                FileUpload::make('testmonialImage')->label('Client Image')->image()->enableOpen()
                     ->columns(1)->directory('testmonyImages')
                     ->getUploadedFileNameForStorageUsing(
                         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
