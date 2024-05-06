@@ -19,7 +19,10 @@ class WhyChooseUs extends Model //  implements  HasTenants
         'heading',
         'text'
     ];
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
  
     public function team()
     {
