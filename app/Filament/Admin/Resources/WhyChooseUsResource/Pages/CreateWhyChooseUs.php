@@ -13,13 +13,13 @@ use Carbon\Carbon;
 class CreateWhyChooseUs extends CreateRecord
 {
     protected static string $resource = WhyChooseUsResource::class;
-    // protected function mutateFormDataBeforeCreate(array $data): array
-    // {
-    //     //$data['team_id'] = Filament::getTenant()->id;
-    //     //dd($data);
-       
-    //     return $data;
-    // }
+ 
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['user_id'] = Filament::auth()->id();;
+    
+        return $data;
+    }
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

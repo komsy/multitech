@@ -13,6 +13,12 @@ class CreateTestmonials extends CreateRecord
 {
     protected static string $resource = TestmonialsResource::class;
 
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['user_id'] = Filament::auth()->id();;
+    
+        return $data;
+    }
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

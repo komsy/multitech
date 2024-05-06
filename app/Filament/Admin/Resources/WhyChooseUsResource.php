@@ -17,6 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Filament\Forms\Components\Card;
 
 class WhyChooseUsResource extends Resource
 {
@@ -35,17 +36,21 @@ class WhyChooseUsResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('icon')->label('Icon')->image()->enableOpen()
-                    ->columns(1)->directory('whyChooseUsIcons')
-                    ->getUploadedFileNameForStorageUsing(
-                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                            ->prepend(now()->timestamp),
-                    ),
-                TextInput::make('heading')
-                    ->required()->maxLength(100),
-                RichEditor::make('text'),
-                // TextInput::make('text')
-                //     ->required()->maxLength(255),
+                Card::make()
+                    ->schema([
+                    FileUpload::make('icon')->label('Icon')->image()->enableOpen()
+                        ->columns(1)->directory('whyChooseUsIcons')
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                ->prepend(now()->timestamp),
+                        ),
+                    TextInput::make('heading')
+                        ->required()->maxLength(100),
+                    RichEditor::make('text'),
+                    // TextInput::make('text')
+                    //     ->required()->maxLength(255),
+                ])
+                ->columns(2)
             ]);
     }
 

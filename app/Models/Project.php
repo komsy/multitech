@@ -6,20 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Testmonials extends Model
+class Project extends Model
 {
     use HasFactory,SoftDeletes;
-
+    
     public $fillable = [
-        // 'team_id',
-        'name',
-        'designation',
-        'testimonial',
-        'testmonialImage',
-        'testmonialStatus'
+        'user_id',
+        'projectName',
+        'heading',
+        'description',
+        'projectImage',
+        'projectStatus',
     ];
 
- 
     public function team()
     {
         return $this->belongsTo(Team::class);

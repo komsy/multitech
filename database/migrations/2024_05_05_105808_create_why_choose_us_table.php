@@ -15,6 +15,8 @@ return new class extends Migration
             $table->increments('id');
             // $table->unsignedInteger('team_id');
             // $table->foreign('team_id')->references('id')->on('teams')->onDelete('CASCADE');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('icon',50);
             $table->string('heading',100);
             $table->longText('text');

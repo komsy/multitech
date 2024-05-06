@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\TestmonialsResource\Pages;
-use App\Filament\Admin\Resources\TestmonialsResource\RelationManagers;
-use App\Models\Testmonials;
+use App\Filament\Admin\Resources\ProjectResource\Pages;
+use App\Filament\Admin\Resources\ProjectResource\RelationManagers;
+use App\Models\Project;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -20,9 +20,9 @@ use Filament\Forms\Components\FileUpload;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Card;
 
-class TestmonialsResource extends Resource
+class ProjectResource extends Resource
 {
-    protected static ?string $model = Testmonials::class;
+    protected static ?string $model = Project::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -32,21 +32,18 @@ class TestmonialsResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                    TextInput::make('name')
-                        ->required()
-                        ->maxLength(55),
-                    TextInput::make('designation')
-                        ->maxLength(55)->default(null),
-                    FileUpload::make('testmonialImage')->label('Client Image')->image()->enableOpen()
-                        ->columns(1)->directory('testmonyImages')
+                    TextInput::make('projectName')
+                        ->required()->maxLength(50),
+                    TextInput::make('heading')
+                        ->maxLength(50)->default(null),
+                    FileUpload::make('projectImage')->label('Project Image')->image()->enableOpen()
+                        ->columns(1)->directory('projectImages')
                         ->getUploadedFileNameForStorageUsing(
                             fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                 ->prepend(now()->timestamp),
                         ),
-                    RichEditor::make('testimonial')->required(),
-                    // TextInput::make('testimonial')
-                    //     ->required()->maxLength(255),
-                    Toggle::make('testmonialStatus')->required()->default(true),
+                    RichEditor::make('description'),
+                    Toggle::make('projectStatus')->required()->default(true),
                 ])
                 ->columns(2)
             ]);
@@ -56,11 +53,12 @@ class TestmonialsResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable(),
-                Tables\Columns\ImageColumn::make('testmonialImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Testmonial Image']),
-                TextColumn::make('designation')->searchable(),
-                TextColumn::make('testimonial')->searchable()->label('Testimony')->html()->words(7),
-                Tables\Columns\BooleanColumn::make('testmonialStatus')->label('Is Active')->toggleable()->toggle(),
+                TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('projectName')->searchable(),
+                TextColumn::make('heading')->searchable(),
+                TextColumn::make('description')->searchable()->label('Project Desc')->html()->words(5),
+                Tables\Columns\ImageColumn::make('projectImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Testmonial Image']),
+                Tables\Columns\BooleanColumn::make('projectStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('updated_at')
                 ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
@@ -88,9 +86,9 @@ class TestmonialsResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTestmonials::route('/'),
-            //'create' => Pages\CreateTestmonials::route('/create'),
-            //'edit' => Pages\EditTestmonials::route('/{record}/edit'),
+            'index' => Pages\ListProjects::route('/'),
+            'create' => Pages\CreateProject::route('/create'),
+            'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
     }
 }
