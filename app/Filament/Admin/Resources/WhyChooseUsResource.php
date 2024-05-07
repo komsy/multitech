@@ -58,6 +58,7 @@ class WhyChooseUsResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
                 Tables\Columns\ImageColumn::make('icon')->label('Icon')->circular()->toggleable()->extraImgAttributes(['title' => 'Why choose Us Icon']),
                 TextColumn::make('heading')->searchable(),
                 TextColumn::make('text')->searchable()->html()->words(7),

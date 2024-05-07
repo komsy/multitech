@@ -35,3 +35,4 @@ Route::get('/login', function () {
 
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::redirect('/laravel/login', '/login')->name('login');

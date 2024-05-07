@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('projectName',50);
-            $table->string('heading',50)->nullable();
-            $table->string('projectImage')->nullable();
+            $table->string('heading',50);
+            $table->string('projectImage');
             $table->longText('description');
             $table->tinyInteger('projectStatus')->comment('0 for Inactive & 1 for Active')->default(1);
             $table->softDeletes();

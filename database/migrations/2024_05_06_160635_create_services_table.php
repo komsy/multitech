@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('serviceName',50);
-            $table->string('serviceHeading',50)->nullable();
-            $table->string('serviceImage')->nullable();
+            $table->string('serviceHeading',50);
+            $table->string('serviceImage');
             $table->longText('serviceDescription');
             $table->tinyInteger('serviceStatus')->comment('0 for Inactive & 1 for Active')->default(1);
             $table->softDeletes();

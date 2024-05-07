@@ -56,9 +56,9 @@ class TestmonialsResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable(),
+                TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
                 Tables\Columns\ImageColumn::make('testmonialImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Testmonial Image']),
-                TextColumn::make('designation')->searchable(),
+                TextColumn::make('name')->searchable(),TextColumn::make('designation')->searchable(),
                 TextColumn::make('testimonial')->searchable()->label('Testimony')->html()->words(7),
                 Tables\Columns\BooleanColumn::make('testmonialStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),

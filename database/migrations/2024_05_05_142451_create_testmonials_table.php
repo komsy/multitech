@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('name',50);
-            $table->string('designation',50)->nullable();
+            $table->string('designation',50);
             $table->string('testmonialImage')->nullable();
             $table->longText('testimonial');
             $table->tinyInteger('testmonialStatus')->comment('0 for Inactive & 1 for Active')->default(1);
