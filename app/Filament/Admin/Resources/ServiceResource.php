@@ -60,8 +60,7 @@ class ServiceResource extends Resource
                 Tables\Columns\ImageColumn::make('serviceImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Testmonial Image']),
                 Tables\Columns\BooleanColumn::make('serviceStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
-                TextColumn::make('updated_at')
-                ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
                 //

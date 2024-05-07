@@ -96,7 +96,7 @@ class AboutResource extends Resource
     }
 
     public static function table(Table $table): Table
-    {
+    {  
         return $table
             ->columns([
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
@@ -117,8 +117,7 @@ class AboutResource extends Resource
                 Tables\Columns\ImageColumn::make('aboutImage4')->label('Image 4')->circular()->toggleable()->toggledHiddenByDefault()->extraImgAttributes(['title' => 'About Image 4']),
                 Tables\Columns\BooleanColumn::make('aboutStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
-                TextColumn::make('updated_at')
-                ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
                 //

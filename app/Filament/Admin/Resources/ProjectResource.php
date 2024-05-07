@@ -60,8 +60,7 @@ class ProjectResource extends Resource
                 Tables\Columns\ImageColumn::make('projectImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Testmonial Image']),
                 Tables\Columns\BooleanColumn::make('projectStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
-                TextColumn::make('updated_at')
-                ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
                 //

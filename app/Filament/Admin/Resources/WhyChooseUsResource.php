@@ -63,8 +63,7 @@ class WhyChooseUsResource extends Resource
                 TextColumn::make('heading')->searchable(),
                 TextColumn::make('text')->searchable()->html()->words(7),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
-                TextColumn::make('updated_at')
-                ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
                 //

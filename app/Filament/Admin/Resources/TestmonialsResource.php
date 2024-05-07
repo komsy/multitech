@@ -62,8 +62,7 @@ class TestmonialsResource extends Resource
                 TextColumn::make('testimonial')->searchable()->label('Testimony')->html()->words(7),
                 Tables\Columns\BooleanColumn::make('testmonialStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
-                TextColumn::make('updated_at')
-                ->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
                 //
