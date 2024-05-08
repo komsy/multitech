@@ -10,7 +10,7 @@ use Filament\facades\Filament;
 
 class CreateCompanyProfile extends CreateRecord
 {
-    protected static string $resource = HomepageResource::class;
+    protected static string $resource = CompanyProfileResource::class;
       
         protected function mutateFormDataBeforeCreate(array $data): array
         {
