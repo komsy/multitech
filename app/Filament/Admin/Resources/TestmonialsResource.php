@@ -24,7 +24,14 @@ class TestmonialsResource extends Resource
 {
     protected static ?string $model = Testmonials::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-microphone';
+    protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?string $slug = 'testimonial'; //url
+ 
+    protected static ?string $navigationLabel = 'Testimonials'; //sidebar
+    protected static ?string $modelLabel = 'testimonial'; //navname
+    // protected static?int $navigationSort= 3;
 
     public static function form(Form $form): Form
     {

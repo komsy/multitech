@@ -24,7 +24,15 @@ class CompanyProfileResource extends Resource
 {
     protected static ?string $model = CompanyProfile::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-home-modern';
+    protected static ?string $recordTitleAttribute = 'companyName';
+
+    protected static ?string $slug = 'profile'; //url
+ 
+    protected static ?string $navigationLabel = 'Company Settings'; //sidebar
+    protected static ?string $modelLabel = 'profile'; //navname
+    // protected static?int $navigationSort= 3;
+    protected static?string $navigationGroup= 'Page Setting';
 
     public static function form(Form $form): Form
     {

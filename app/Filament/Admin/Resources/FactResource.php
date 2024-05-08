@@ -25,7 +25,14 @@ class FactResource extends Resource
 {
     protected static ?string $model = Fact::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-document-check';
+    protected static ?string $recordTitleAttribute = 'heading';
+
+    protected static ?string $slug = 'fact'; //url
+ 
+    protected static ?string $navigationLabel = 'Facts'; //sidebar
+    protected static ?string $modelLabel = 'fact'; //navname
+    // protected static?int $navigationSort= 3;
 
     public static function form(Form $form): Form
     {

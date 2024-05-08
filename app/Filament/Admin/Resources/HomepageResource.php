@@ -27,7 +27,15 @@ class HomepageResource extends Resource
 {
     protected static ?string $model = Homepage::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-home';
+    protected static ?string $recordTitleAttribute = 'header1';
+
+    protected static ?string $slug = 'home'; //url
+ 
+    protected static ?string $navigationLabel = 'Homepage'; //sidebar
+    protected static ?string $modelLabel = 'banner'; //navname
+    // protected static?int $navigationSort= 3;
+    protected static?string $navigationGroup= 'Page Setting';
 
     public static function form(Form $form): Form
     {

@@ -29,7 +29,7 @@ class WhyChooseUsResource extends Resource
     protected static ?string $navigationLabel = 'Why Choose Us'; //sidebar
     protected static ?string $modelLabel = 'whychooseus'; //navname
     // protected static?int $navigationSort= 3;
-    protected static?string $navigationGroup= 'Website Setting';
+    // protected static?string $navigationGroup= 'Website Setting';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
