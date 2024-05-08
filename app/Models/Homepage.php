@@ -31,6 +31,12 @@ class Homepage extends Model
         'testmonyShow',
         'newsletterShow',
     ];
+
+    protected $casts = [
+        'homepageImage' => 'array'
+    ];  
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

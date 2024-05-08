@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Admin\Resources\HomepageResource\Pages;
+namespace App\Filament\Admin\Resources\CompanyProfileResource\Pages;
 
-use App\Filament\Admin\Resources\HomepageResource;
+use App\Filament\Admin\Resources\CompanyProfileResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Filament\facades\Filament;
 
-class EditHomepage extends EditRecord
+class EditCompanyProfile extends EditRecord
 {
-    protected static string $resource = HomepageResource::class;
+    protected static string $resource = CompanyProfileResource::class;
 
     protected function getHeaderActions(): array
     {

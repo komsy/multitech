@@ -21,6 +21,8 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\BooleanColumn;
+
 class HomepageResource extends Resource
 {
     protected static ?string $model = Homepage::class;
@@ -38,7 +40,7 @@ class HomepageResource extends Resource
                         TextInput::make('header1')->label('Banner Heading')->required()->maxLength(100),
                         TextInput::make('header2')->label('Banner Sub-heading')->required()->maxLength(150), 
                         FileUpload::make('homepageImage')->label('Carousel Images')->image()->enableOpen()
-                        ->columns(1)->directory('homepageImages')
+                        ->columns(1)->multiple()->directory('homepageImages')
                         ->getUploadedFileNameForStorageUsing(
                             fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                 ->prepend(now()->timestamp),),
@@ -76,62 +78,28 @@ class HomepageResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('header1')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('header2')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('whyChooseUsHeader1')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('whyChooseUsHeader2')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('serviceHeader1')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('serviceHeader2')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('projectHeader1')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('projectHeader2')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('testimonialHeader1')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('testimonialHeader2')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('topbarShow')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('factShow')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('factPageShow')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('projectShow')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('whyChooseUsShow')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('testmonyShow')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('newsletterShow')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('user.name')->sortable()->searchable()->toggleable(),
+                TextColumn::make('header1')->label('Banner Heading')->searchable(),
+                TextColumn::make('header2')->label('Banner Sub-heading')->searchable(),
+                TextColumn::make('whyChooseUsHeader1')->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('whyChooseUsHeader2')->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('serviceHeader1')->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('serviceHeader2')->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('projectHeader1')->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('projectHeader2')->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('testimonialHeader1')->searchable()->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('testimonialHeader2')->searchable()->toggleable()->toggledHiddenByDefault(),
+                BooleanColumn::make('topbarShow')->label('Topbar Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
+                BooleanColumn::make('factShow')->label('Facts Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
+                BooleanColumn::make('factPageShow')->label('Facts Page Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
+                BooleanColumn::make('projectShow')->label('Project Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
+                BooleanColumn::make('whyChooseUsShow')->label('Why Choose Us Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
+                BooleanColumn::make('testmonyShow')->label('Testmonial Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
+                BooleanColumn::make('newsletterShow')->label('News letter Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
+                Tables\Columns\ImageColumn::make('homepageImage')->label('Homepage Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Home Page Image']),
+                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
+                TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
+    
             ])
             ->filters([
                 //

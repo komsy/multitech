@@ -2,7 +2,7 @@
         <div class="container-fluid sticky-top px-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-light py-3 px-4">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="text-secondary display-6"><i class="fas fa-city text-primary me-3"></i>Constra</h1>
+                    <h1 class="text-secondary display-6"><i class="fas fa-city text-primary me-3"></i>Multitech</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
