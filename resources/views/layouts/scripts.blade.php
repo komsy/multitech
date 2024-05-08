@@ -11,3 +11,6 @@
 
     <!-- Template Javascript -->
     <script src="js/frontend/main.js"></script>
+
+    
+@yield('scripts')

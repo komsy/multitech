@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('why_choose_us', function (Blueprint $table) {
+        Schema::create('facts', function (Blueprint $table) {
             $table->increments('id');
-            // $table->unsignedInteger('team_id');
-            // $table->foreign('team_id')->references('id')->on('teams')->onDelete('CASCADE');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('icon',50);
-            $table->string('heading',100);
-            $table->longText('text');
-            $table->tinyInteger('status')->comment('0 for Inactive & 1 for Active')->default(1);
+            $table->string('heading',50);
+            $table->integer('number');
+            $table->tinyInteger('factStatus')->comment('0 for Inactive & 1 for Active')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('why_choose_us');
+        Schema::dropIfExists('facts');
     }
 };

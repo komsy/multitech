@@ -11,7 +11,7 @@ class Testmonials extends Model
     use HasFactory,SoftDeletes;
 
     public $fillable = [
-        // 'team_id',
+        'user_id',
         'name',
         'designation',
         'testimonial',

@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources\ServiceResource\Pages;
 use App\Filament\Admin\Resources\ServiceResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Filament\facades\Filament;
 
 class EditService extends EditRecord
 {
@@ -15,5 +16,16 @@ class EditService extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+    
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['user_id'] = Filament::auth()->id();;
+    
+        return $data;
+    }
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Testmonials;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\About;
+use App\Models\Fact;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,9 @@ class HomeController extends Controller
         $services=Service::select('serviceName','serviceHeading','serviceImage','serviceDescription')->where('serviceStatus',1)->get();
         $whyChooseUs=WhyChooseUs::select('icon','heading','text')->get();
         $aboutUs=About::where('aboutStatus',1)->first();
+        $facts=Fact::select('icon','heading','number')->where('factStatus',1)->get();
        // dd($testimonials);
-        return view('frontend.welcome',compact('testimonials','whyChooseUs','projects','services','aboutUs'));
+        return view('frontend.welcome',compact('testimonials','whyChooseUs','projects','services','aboutUs','facts'));
     }
     public function about()
     {

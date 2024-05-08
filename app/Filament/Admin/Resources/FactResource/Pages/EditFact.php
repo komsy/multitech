@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Admin\Resources\ProjectResource\Pages;
+namespace App\Filament\Admin\Resources\FactResource\Pages;
 
-use App\Filament\Admin\Resources\ProjectResource;
+use App\Filament\Admin\Resources\FactResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Filament\facades\Filament;
 
-class EditProject extends EditRecord
+class EditFact extends EditRecord
 {
-    protected static string $resource = ProjectResource::class;
+    protected static string $resource = FactResource::class;
 
     protected function getHeaderActions(): array
     {
