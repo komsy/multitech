@@ -9,6 +9,7 @@
         <!-- Features End -->
     
         <!-- Fact Counter -->
+        @if ($homepage->factPageShow == 1)
         <div class="container-fluid counter py-5">
             <div class="container py-5">
                 <div class="row g-4">
@@ -78,6 +79,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <!-- Fact Counter -->
         <!-- Footer Start -->
             @include('layouts.frontend.footer')
