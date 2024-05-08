@@ -19,7 +19,8 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Card;
-
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Section;
 class HomepageResource extends Resource
 {
     protected static ?string $model = Homepage::class;
@@ -30,35 +31,47 @@ class HomepageResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('header1')->required()->maxLength(100),
-                TextInput::make('header2')->required()->maxLength(150), 
-                FileUpload::make('homepageImage')->label('Carousel Images')->image()->enableOpen()
-                ->columns(1)->directory('homepageImages')
-                ->getUploadedFileNameForStorageUsing(
-                    fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                        ->prepend(now()->timestamp),
-                ),
+                Section::make('Home Page')
+                    ->description('Set what to display on the page Banner')
+                    ->columns(2)->compact()
+                    ->schema([
+                        TextInput::make('header1')->label('Banner Heading')->required()->maxLength(100),
+                        TextInput::make('header2')->label('Banner Sub-heading')->required()->maxLength(150), 
+                        FileUpload::make('homepageImage')->label('Carousel Images')->image()->enableOpen()
+                        ->columns(1)->directory('homepageImages')
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                ->prepend(now()->timestamp),),
+                        ])->collapsible(),
 
-                TextInput::make('whyChooseUsHeader1')->label('Why Choose Us H1')->required()->maxLength(50),
-                TextInput::make('whyChooseUsHeader2')->label('Why Choose Us H2')->required()->maxLength(150),
-                TextInput::make('serviceHeader1')->label('Service H1')->required()->maxLength(50),
-                TextInput::make('serviceHeader2')->label('Service H2')->required() ->maxLength(150),
-                TextInput::make('projectHeader1')->label('Project H1')->required()->maxLength(50),
-                TextInput::make('projectHeader2')->label('Project H2')->required()->maxLength(150),
-                TextInput::make('testimonialHeader1')->label('Testimonial H1')->required()->maxLength(50),
-                TextInput::make('testimonialHeader2')->label('Testimonial H2')->required()->maxLength(150),
-                
-               
-                Toggle::make('topbarShow')->label('Topbar')->required()->default(true),
-                Toggle::make('factShow')->label('Fact')->required()->default(true),
-                Toggle::make('factPageShow')->label('Facts Page')->required()->default(true),
-                Toggle::make('projectShow')->label('Project')->required()->default(true),
-                Toggle::make('whyChooseUsShow')->label('Why Choose Us')->required()->default(true),
-                Toggle::make('testmonyShow')->label('Testmony')->required()->default(true),
-                Toggle::make('newsletterShow')->label('News Letter')->required()->default(true),
+                Section::make('Text setting')
+                    ->description('Set the text to display on specific sections of the Home page')
+                    ->columns(3)->compact()
+                    ->schema([
+                        TextInput::make('whyChooseUsHeader1')->label('Why Choose Us H1')->required()->maxLength(50),
+                        TextInput::make('whyChooseUsHeader2')->label('Why Choose Us H2')->required()->maxLength(150),
+                        TextInput::make('serviceHeader1')->label('Service H1')->required()->maxLength(50),
+                        TextInput::make('serviceHeader2')->label('Service H2')->required() ->maxLength(150),
+                        TextInput::make('projectHeader1')->label('Project H1')->required()->maxLength(50),
+                        TextInput::make('projectHeader2')->label('Project H2')->required()->maxLength(150),
+                        TextInput::make('testimonialHeader1')->label('Testimonial H1')->required()->maxLength(50),
+                        TextInput::make('testimonialHeader2')->label('Testimonial H2')->required()->maxLength(150),
+                        ])->collapsed(),
+
+                Section::make('Visibility')
+                    ->description('Show/Hide specific pages on Home page')
+                    ->columns(2)->compact()
+                    ->schema([
+                        Toggle::make('topbarShow')->label('Topbar')->required()->default(true),
+                        Toggle::make('factShow')->label('Fact')->required()->default(true),
+                        Toggle::make('factPageShow')->label('Facts Page')->required()->default(true),
+                        Toggle::make('projectShow')->label('Project')->required()->default(true),
+                        Toggle::make('whyChooseUsShow')->label('Why Choose Us')->required()->default(true),
+                        Toggle::make('testmonyShow')->label('Testmony')->required()->default(true),
+                        Toggle::make('newsletterShow')->label('News Letter')->required()->default(true),
+                ])->collapsed(),
             ]);
     }
-
     public static function table(Table $table): Table
     {
         return $table
