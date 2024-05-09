@@ -15,7 +15,8 @@ class Fact extends Model
         'icon',
         'heading',
         'number',
-        'factStatus'
+        'factStatus',
+        'factPageShow'
     ];
     public function user()
     {

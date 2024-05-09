@@ -14,7 +14,7 @@
                                 <img src="{{ asset('/storage/'.$service->serviceImage)}}" class="img-fluid w-100 pt-3 ps-3 mb-3" alt="">
 
                                 {{-- <i class="fa fa-code fa-7x mb-4 text-primary"></i> --}}
-                                <h4 class="mb-2">{{ $service->serviceHeading }}</h4>
+                                <h4 class="mb-2">{{ $service->serviceName }}</h4>
                                 <p class="mb-4">{!! html_entity_decode ( $service->serviceDescription) !!}</p>
                                 <a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Read More</a>
                             </div>

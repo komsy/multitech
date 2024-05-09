@@ -13,7 +13,7 @@
                             <h5 class="text-white mb-0">{{ $fact->heading }}</h5>
                             <h1>
                                 <span class="text-white mb-0" data-toggle="counter-up">{{ $fact->number }}</span>
-                                    <span class="h1 fw-bold text-white">+</span>
+                                <span class="h1 fw-bold text-white">+</span>
                             </h1>
                         </div>
                     </div>

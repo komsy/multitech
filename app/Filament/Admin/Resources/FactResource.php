@@ -40,15 +40,17 @@ class FactResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                    FileUpload::make('icon')->label('Icon')->image()->enableOpen()
-                        ->columns(1)->directory('Facts')
-                        ->getUploadedFileNameForStorageUsing(
-                            fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                ->prepend(now()->timestamp),
-                        ),
+                    // FileUpload::make('icon')->label('Icon')->image()->enableOpen()
+                    //     ->columns(1)->directory('Facts')
+                    //     ->getUploadedFileNameForStorageUsing(
+                    //         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                    //             ->prepend(now()->timestamp),
+                    //     ),
+                    TextInput::make('icon')->required()->maxLength(150),
                     TextInput::make('heading')->required()->maxLength(100),
                     TextInput::make('number')->required()->numeric(),
                     Hidden::make('user_id')->default(auth()->id()),
+                    Toggle::make('factPageShow')->required()->default(true),
                     Toggle::make('factStatus')->required()->default(true),
                 ])
                 ->columns(2)
@@ -60,9 +62,10 @@ class FactResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
-                Tables\Columns\ImageColumn::make('icon')->label('Icon')->circular()->toggleable()->extraImgAttributes(['title' => 'Why choose Us Icon']),
+                // Tables\Columns\ImageColumn::make('icon')->label('Icon')->circular()->toggleable()->extraImgAttributes(['title' => 'Why choose Us Icon']),
                 TextColumn::make('heading')->searchable(),
                 TextColumn::make('number')->numeric()->searchable(),
+                Tables\Columns\BooleanColumn::make('factPageShow')->label('Show/Hide')->toggleable()->toggle(),
                 Tables\Columns\BooleanColumn::make('factStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
                 TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),

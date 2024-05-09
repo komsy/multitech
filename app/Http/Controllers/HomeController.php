@@ -14,47 +14,73 @@ use App\Models\Homepage;
 
 class HomeController extends Controller
 {
+    
+    protected $companyDetails;
+    protected $homepage;
+    protected $services;
+    protected $servicess;
+    protected $whyChooseUs;
+    protected $aboutUs;
+    protected $facts;
+    protected $testimonials;
+
+    public function __construct()
+    {
+        $this->companyDetails = CompanyProfile::first();
+        $this->homepage = Homepage::first();
+        $this->services = Service::select('serviceName', 'serviceHeading', 'serviceImage', 'serviceDescription')
+            ->where('serviceStatus', 1)->get();
+        $this->servicess=Service::select('serviceName',)->where('serviceStatus',1)->get();
+        $this->whyChooseUs = WhyChooseUs::select('icon', 'heading', 'text')->get();
+        $this->aboutUs = About::where('aboutStatus', 1)->first();
+        $this->facts = Fact::select('icon', 'heading', 'number')->where('factPageShow', 1)->get();
+        $this->testimonials = Testmonials::select('name', 'designation', 'testmonialImage', 'testimonial')
+            ->where('testmonialStatus', 1)->get();
+    }
+
     public function welcome()
     {
-        $testimonials=Testmonials::select('name','designation','testmonialImage','testimonial')->where('testmonialStatus',1)->get();
+        $companyDetails = $this->companyDetails;
+        $homepage = $this->homepage;
+        $facts = $this->facts;
+        $testimonials = $this->testimonials;
+        $whyChooseUs = $this->whyChooseUs;
+        $services = $this->services;
+        $aboutUs = $this->aboutUs;   
         $projects=Project::select('projectName','heading','description','projectImage')->where('projectStatus',1)->get();
-        $services=Service::select('serviceName','serviceHeading','serviceImage','serviceDescription')->where('serviceStatus',1)->get();
-        $whyChooseUs=WhyChooseUs::select('icon','heading','text')->get();
-        $aboutUs=About::where('aboutStatus',1)->first();
         $facts=Fact::select('icon','heading','number')->where('factStatus',1)->get();
-        $companyDetails=CompanyProfile::first();
-        $homepage=Homepage::first();
-       // dd($testimonials);
+    //    dd($facts);
         return view('frontend.welcome',compact('companyDetails','homepage','testimonials','whyChooseUs','projects','services','aboutUs','facts'));
     }
     public function about()
     {
-
-        $companyDetails=CompanyProfile::first();
-        $homepage=Homepage::first();
-        $whyChooseUs=WhyChooseUs::select('icon','heading','text')->get();
-        $aboutUs=About::where('aboutStatus',1)->first();
-       // dd($testimonials);
-        return view('frontend.about',compact('companyDetails','homepage','whyChooseUs','aboutUs'));
+        $companyDetails = $this->companyDetails;
+        $facts = $this->facts;
+        $services = $this->servicess;
+        $homepage = $this->homepage;
+        $whyChooseUs = $this->whyChooseUs;
+        $aboutUs = $this->aboutUs;       
+        return view('frontend.about',compact('companyDetails','facts','services','homepage','whyChooseUs','aboutUs'));
     }
     public function service()
     {
-
-        $testimonials=Testmonials::select('name','designation','testmonialImage','testimonial')->where('testmonialStatus',1)->get();
-        $companyDetails=CompanyProfile::first();
-        $homepage=Homepage::first();
-        $services=Service::select('serviceName','serviceHeading','serviceImage','serviceDescription')->where('serviceStatus',1)->get();
-        $facts=Fact::select('icon','heading','number')->where('factStatus',1)->get();
-       // dd($testimonials);
+        $companyDetails = $this->companyDetails;
+        $facts = $this->facts;
+        $services = $this->services;
+        $homepage = $this->homepage;
+        $testimonials = $this->testimonials;
         return view('frontend.service',compact('companyDetails','homepage','services','facts','testimonials'));
     }
 
     public function contact()
     {
-
-        $companyDetails=CompanyProfile::first();
-        $homepage=Homepage::first();
-       // dd($testimonials);
-        return view('frontend.contact',compact('companyDetails','homepage'));
+        $companyDetails = $this->companyDetails;
+        $homepage = $this->homepage;
+        $services = $this->servicess;       
+        return view('frontend.contact',compact('companyDetails','homepage','services'));
     }
 }
+
+
+
+

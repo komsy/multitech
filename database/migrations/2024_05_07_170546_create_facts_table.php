@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('icon',50);
             $table->string('heading',50);
             $table->integer('number');
+            $table->tinyInteger('factPageShow')->comment('0 for Inactive & 1 for Active')->default(1);
             $table->tinyInteger('factStatus')->comment('0 for Inactive & 1 for Active')->default(1);
             $table->softDeletes();
             $table->timestamps();

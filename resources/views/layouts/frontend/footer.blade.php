@@ -1,7 +1,4 @@
-<?php
-$companyDetails=\App\Models\CompanyProfile::first();
-$homepage=\App\Models\Homepage::select('newsletterShow')->first();
-?>
+
 @if ($homepage->newsletterShow == 1)
     <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row justify-content-center">
@@ -25,7 +22,7 @@ $homepage=\App\Models\Homepage::select('newsletterShow')->first();
             <div class="row g-5">
                 <div class="col-md-6 col-lg-4">
                     <div class="bg-primary rounded p-4">
-                        <a href="index.html"><h1 class="text-white text-uppercase mb-3">{{env('APP_NAME', 'Multitech Solutions (K) Ltd')}}</h1></a>
+                        <a href="index.html"><h1 class="text-white text-uppercase mb-3">{{ explode(' ', env('APP_NAME', 'Multitech Solutions (K) Ltd'))[0] }}</h1></a>
                         <p class="text-white mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum</p>
                     </div>
                 </div>
@@ -65,17 +62,20 @@ $homepage=\App\Models\Homepage::select('newsletterShow')->first();
                             <a class="btn btn-link" href>Terms & Condition</a> --}}
                         </div>
                         <div class="col-md-6">
+                            
                             <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
-                            <a class="btn btn-link" href>Easy POS Software</a>
-                            <a class="btn btn-link" href>Tally Software</a>
-                            <a class="btn btn-link" href>Pact Software</a>
-                            <a class="btn btn-link" href>CCTV Installation</a>
-                            <a class="btn btn-link" href>Solar System</a>
-                            <a class="btn btn-link" href>KRA approved Device</a>
-                            <a class="btn btn-link" href>eTIMS</a>
-                            <a class="btn btn-link" href>Database Management</a>
-                            <a class="btn btn-link" href>Computer and accessories supply</a>
-                            <a class="btn btn-link" href>Consultancy</a>
+                            @foreach ($services as $service)
+                                <a class="btn btn-link" href>{{ $service->serviceName }}</a>
+                            @endforeach
+                                {{-- <a class="btn btn-link" href>Tally Software</a>
+                                <a class="btn btn-link" href>Pact Software</a>
+                                <a class="btn btn-link" href>CCTV Installation</a>
+                                <a class="btn btn-link" href>Solar System</a>
+                                <a class="btn btn-link" href>KRA approved Device</a>
+                                <a class="btn btn-link" href>eTIMS</a>
+                                <a class="btn btn-link" href>Database Management</a>
+                                <a class="btn btn-link" href>Computer and accessories supply</a>
+                                <a class="btn btn-link" href>Consultancy</a> --}}
                         </div>
                     </div>
                 </div>

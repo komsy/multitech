@@ -1,5 +1,8 @@
 @extends('layouts.homepage')
 @section('content')
+        <!-- Facts Start -->
+            @include('frontend.homePage.fact')
+        <!-- Facts End -->
 
         <!-- About Start -->
             @include('frontend.pages.about')
