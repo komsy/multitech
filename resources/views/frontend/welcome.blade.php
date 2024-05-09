@@ -5,16 +5,16 @@
         <!-- Facts End -->
 
         <!-- About Start -->
-            @include('frontend.about.about')
+            @include('frontend.pages.about')
         <!-- About End -->
 
         <!-- Features Start -->
-            @include('frontend.about.feature')
+            @include('frontend.pages.feature')
         <!-- Features End -->
     
         
         <!-- Services Start -->
-            @include('frontend.service.service')
+            @include('frontend.pages.service')
         <!-- Services End -->
 
         <!-- Projects Start -->

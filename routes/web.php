@@ -20,19 +20,21 @@ use \App\Http\Controllers\HomeController;
 //     return view('about');
 // })->name('about');
 
-Route::get('/service', function () {
-    return view('service');
-})->name('service');
+// Route::get('/service', function () {
+//     return view('service');
+// })->name('service');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+// Route::get('/contact', function () {
+//     return view('contact');
+// })->name('contact');
 
 
 Route::get('/login', function () {
     return redirect('/app/login');
 });
 
+Route::redirect('/laravel/login', '/login')->name('login');
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::redirect('/laravel/login', '/login')->name('login');
+Route::get('/service', [HomeController::class, 'service'])->name('service');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

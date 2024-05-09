@@ -45,13 +45,14 @@
             <span class="fa fa-bars"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
+            
             <div class="navbar-nav ms-auto pt-2 pt-lg-0">
-                <a href="" class="nav-item nav-link active ">Home</a>
-                <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
-                <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
-                <!-- <a href="project.html" class="nav-item nav-link">Projects</a> -->
-                <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
+                <a href="{{ url('/') }}" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
+                <a href="{{ route('about') }}" class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">About</a>
+                <a href="{{ route('service') }}" class="nav-item nav-link {{ Request::is('service') ? 'active' : '' }}">Services</a>
+                <a href="{{ route('contact') }}" class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a> 
             </div>
+            
             
             <div class="d-none d-xl-flex flex-shirink-0 ml-5">
                 <div id="phone-tada" class="d-flex align-items-center justify-content-center me-4">

@@ -1,17 +1,19 @@
 @extends('layouts.app')
 @section('content')
-        <!-- About Start -->
-            @include('frontend.pages.about')
-        <!-- About End -->
-
-        <!-- Features Start -->
-            @include('frontend.pages.feature')
-        <!-- Features End -->
     
+        <!-- Services Start -->
+        @include('frontend.pages.service')
+        <!-- Services End -->
+  
         <!-- Fact Counter -->
-            @include('frontend.pages.factspage')
+        @include('frontend.pages.factspage')
         <!-- End Fact Counter -->
 
+        <!-- Testimonial Start -->
+            @include('frontend.homePage.testimonial')
+        <!-- Testimonial End -->
+  
+        <!-- Fact Counter -->
         <!-- Footer Start -->
             @include('layouts.frontend.footer')
         <!-- Footer End -->
