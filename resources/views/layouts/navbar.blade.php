@@ -1,3 +1,8 @@
+
+<?php
+$companyDetails=\App\Models\CompanyProfile::first();
+$homepage=\App\Models\Homepage::select('topbarShow',)->first();
+?>
 @if ($homepage->topbarShow == 1)
 <!-- Topbar Start -->
 <div class="container-fluid bg-primary text-white d-none d-lg-flex top-section">
@@ -12,19 +17,19 @@
                 </small>
                 <div class="ms-3 d-flex">
                     @if($companyDetails->facebookProfile)
-                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2"
+                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2" target="_blank" rel="noopener noreferrer"
                         href="{{ $companyDetails->facebookProfile }}"><i class="fab fa-facebook-f"></i></a>
                     @endif
                     @if($companyDetails->instagramProfile)
-                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2"
+                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2" target="_blank" rel="noopener noreferrer"
                         href="{{ $companyDetails->instagramProfile }}"><i class="fab fa-instagram"></i></a>
                     @endif
                     @if($companyDetails->twitterProfile)
-                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2"
+                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2" target="_blank" rel="noopener noreferrer"
                         href="{{ $companyDetails->twitterProfile }}"><i class="fab fa-twitter"></i></a>
                     @endif
                     @if($companyDetails->linkedinProfile)
-                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2"
+                        <a class="social-btn btn-sm-square btn-light text-primary rounded-circle ms-2" target="_blank" rel="noopener noreferrer"
                         href="{{ $companyDetails->linkedinProfile }}"><i class="fab fa-linkedin-in"></i></a>
                     @endif
                 </div>
