@@ -1,4 +1,6 @@
-
+<?php
+$services=\App\Models\Service::select('serviceName',)->where('serviceStatus',1)->get();
+?>
 @if ($homepage->newsletterShow == 1)
     <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row justify-content-center">

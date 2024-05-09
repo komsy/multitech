@@ -56,11 +56,10 @@ class HomeController extends Controller
     {
         $companyDetails = $this->companyDetails;
         $facts = $this->facts;
-        $services = $this->servicess;
         $homepage = $this->homepage;
         $whyChooseUs = $this->whyChooseUs;
         $aboutUs = $this->aboutUs;       
-        return view('frontend.about',compact('companyDetails','facts','services','homepage','whyChooseUs','aboutUs'));
+        return view('frontend.about',compact('companyDetails','facts','homepage','whyChooseUs','aboutUs'));
     }
     public function service()
     {
@@ -76,8 +75,8 @@ class HomeController extends Controller
     {
         $companyDetails = $this->companyDetails;
         $homepage = $this->homepage;
-        $services = $this->servicess;       
-        return view('frontend.contact',compact('companyDetails','homepage','services'));
+        // $services = $this->servicess;       
+        return view('frontend.contact',compact('companyDetails','homepage',));
     }
 }
 
