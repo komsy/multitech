@@ -30,7 +30,7 @@ class ProjectResource extends Resource
     protected static ?string $slug = 'project'; //url
  
     protected static ?string $navigationLabel = 'Projects'; //sidebar
-    protected static ?string $modelLabel = 'project'; //navname
+    protected static ?string $modelLabel = 'Project'; //navname
     // protected static?int $navigationSort= 3;
 
     public static function form(Form $form): Form

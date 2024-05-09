@@ -31,7 +31,7 @@ class FactResource extends Resource
     protected static ?string $slug = 'fact'; //url
  
     protected static ?string $navigationLabel = 'Facts'; //sidebar
-    protected static ?string $modelLabel = 'fact'; //navname
+    protected static ?string $modelLabel = 'Fact'; //navname
     // protected static?int $navigationSort= 3;
 
     public static function form(Form $form): Form
@@ -52,8 +52,7 @@ class FactResource extends Resource
                     Hidden::make('user_id')->default(auth()->id()),
                     Toggle::make('factPageShow')->required()->default(true),
                     Toggle::make('factStatus')->required()->default(true),
-                ])
-                ->columns(2)
+                ])->columns(2)
             ]);
     }
 

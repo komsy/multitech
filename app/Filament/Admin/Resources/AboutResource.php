@@ -27,6 +27,13 @@ class AboutResource extends Resource
     protected static ?string $model = About::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-clipboard-document-list';
+    protected static ?string $recordTitleAttribute = 'aboutHeading1';
+
+    protected static ?string $slug = 'about'; //url
+ 
+    protected static ?string $navigationLabel = 'About Us'; //sidebar
+    protected static ?string $modelLabel = 'About'; //navname
+    // protected static?int $navigationSort= 3;
 
     public static function form(Form $form): Form
     {

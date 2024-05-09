@@ -30,7 +30,7 @@ class ServiceResource extends Resource
     protected static ?string $slug = 'service'; //url
  
     protected static ?string $navigationLabel = 'Services'; //sidebar
-    protected static ?string $modelLabel = 'service'; //navname
+    protected static ?string $modelLabel = 'Service'; //navname
     // protected static?int $navigationSort= 3;
 
     public static function form(Form $form): Form

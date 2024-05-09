@@ -30,7 +30,7 @@ class TestmonialsResource extends Resource
     protected static ?string $slug = 'testimonial'; //url
  
     protected static ?string $navigationLabel = 'Testimonials'; //sidebar
-    protected static ?string $modelLabel = 'testimonial'; //navname
+    protected static ?string $modelLabel = 'Testimonial'; //navname
     // protected static?int $navigationSort= 3;
 
     public static function form(Form $form): Form

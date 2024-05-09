@@ -33,7 +33,7 @@ class HomepageResource extends Resource
     protected static ?string $slug = 'home'; //url
  
     protected static ?string $navigationLabel = 'Homepage'; //sidebar
-    protected static ?string $modelLabel = 'banner'; //navname
+    protected static ?string $modelLabel = 'Banner'; //navname
     // protected static?int $navigationSort= 3;
     protected static?string $navigationGroup= 'Page Setting';
 
