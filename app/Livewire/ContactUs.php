@@ -3,6 +3,9 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use App\Mail\ContactUsFormMail;
 
 class ContactUs extends Component
 {
@@ -33,15 +36,26 @@ class ContactUs extends Component
     public function submit()
     {
         $validated = $this->validate();
-
-        //dd($this->service_id);
+        $email=$this->contactEmail;
+        $contactName=$this->contactName;
+        $message=[
+            'email'=>$email,
+            'name'=>$contactName,
+            'branch'=>$contactName,
+            ];
+        $service = \App\Models\Service::select('serviceName')->findOrFail($this->service_id);
+        //dd($service->serviceName);
+        try{
         \App\Models\ContactUsForm::create($validated);
-        // try{
-        //     Mail::to('koometest@gmail.com')->send(new ContactMail($this->contactName, $this->contactEmail, $this->contactMessage));
-        // }catch(\Exception $e){
-        //     session()->flash('error', 'Oops ! Something went wrong');
-        //     return;
-        // }
+            // Mail::send('emails.customer',$message,function($message)use($email,$contactName){
+            //     $message->to($email)->subject('Service Inquiry Submitted');
+            //   });
+            Mail::to($email)->queue(new ContactUsFormMail($this->contactName, $this->contactEmail, $service));
+        }catch(\Exception $e){
+            Log::info($e);
+            session()->flash('error', 'Oops ! Something went wrong');
+            return;
+        }
 
         session()->flash('success', 'Your message is in our inbox, A human will get back to you.');
 
