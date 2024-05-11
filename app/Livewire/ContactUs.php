@@ -9,16 +9,19 @@ class ContactUs extends Component
     public string $contactName = '';
     public string $contactEmail = '';
     public string $contactMessage = '';
-    public string $service_id = '';
+    public  $service_id;
     public string $contactNumber = '';
 
     public function render()
     {
         $services=\App\Models\Service::select('serviceName','id')->where('serviceStatus',1)->get();
-
-        return view('livewire.contact-us',compact('services'));
+        $companyDetails = \App\Models\CompanyProfile::first();
+        $homepage = \App\Models\Homepage::first();
+        $contactUs= \App\Models\ContactUs::select('header','subHeading','text','map')->first();
+        
+        return view('livewire.contact-us',compact('services','companyDetails','contactUs'));
     } 
-
+    
     protected $rules = [
         'contactName' => 'required|min:6',
         'contactEmail' => 'required|email',
@@ -31,7 +34,7 @@ class ContactUs extends Component
     {
         $validated = $this->validate();
 
-        dd($this->service_id);
+        //dd($this->service_id);
         \App\Models\ContactUsForm::create($validated);
         // try{
         //     Mail::to('koometest@gmail.com')->send(new ContactMail($this->contactName, $this->contactEmail, $this->contactMessage));
