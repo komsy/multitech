@@ -38,17 +38,16 @@ class WhyChooseUsResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                    FileUpload::make('icon')->label('Icon')->image()->enableOpen()
-                        ->columns(1)->directory('whyChooseUsIcons')
-                        ->getUploadedFileNameForStorageUsing(
-                            fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                ->prepend(now()->timestamp),
-                        ),
-                    TextInput::make('heading')
-                        ->required()->maxLength(100),
+                    // FileUpload::make('icon')->label('Icon')->image()->enableOpen()
+                    //     ->columns(1)->directory('whyChooseUsIcons')
+                    //     ->getUploadedFileNameForStorageUsing(
+                    //         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                    //             ->prepend(now()->timestamp),
+                    //     ),
+                    TextInput::make('icon')->required()->maxLength(150),
+                    TextInput::make('heading')->required()->maxLength(100),
                     RichEditor::make('text'),
-                    // TextInput::make('text')
-                    //     ->required()->maxLength(255),
+                    // TextInput::make('text')->required()->maxLength(255),
                 ])
                 ->columns(2)
             ]);
@@ -59,7 +58,8 @@ class WhyChooseUsResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
-                Tables\Columns\ImageColumn::make('icon')->label('Icon')->circular()->toggleable()->extraImgAttributes(['title' => 'Why choose Us Icon']),
+                // Tables\Columns\ImageColumn::make('icon')->label('Icon')->circular()->toggleable()->extraImgAttributes(['title' => 'Why choose Us Icon']),
+                // TextColumn::make('icon')->searchable(),
                 TextColumn::make('heading')->searchable(),
                 TextColumn::make('text')->searchable()->html()->words(7),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),

@@ -16,7 +16,7 @@
                                 {{-- <i class="fa fa-code fa-7x mb-4 text-primary"></i> --}}
                                 <h4 class="mb-2">{{ $service->serviceName }}</h4>
                                 <p class="mb-4">{!! html_entity_decode ( $service->serviceDescription) !!}</p>
-                                <a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Read More</a>
+                                <a href="{{ route('contact') }}" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Get In Touch</a>
                             </div>
                         </div>
                     </div>

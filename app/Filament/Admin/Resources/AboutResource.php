@@ -56,18 +56,20 @@ class AboutResource extends Resource
                 Tabs\Tab::make('About Icons')
                 ->icon('heroicon-s-rectangle-group')
                     ->schema([
-                        FileUpload::make('aboutIcon1')->label('About Icon 1')->image()->enableOpen()
-                            ->columns(1)->directory('aboutImages')
-                            ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                    ->prepend(now()->timestamp),
-                            ),
-                        FileUpload::make('aboutIcon2')->label('About Icon 2')->image()->enableOpen()
-                            ->columns(1)->directory('aboutImages')
-                            ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                    ->prepend(now()->timestamp),
-                            ),
+                        // FileUpload::make('aboutIcon1')->label('About Icon 1')->image()->enableOpen()
+                        //     ->columns(1)->directory('aboutImages')
+                        //     ->getUploadedFileNameForStorageUsing(
+                        //         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                        //             ->prepend(now()->timestamp),
+                        //     ),
+                        // FileUpload::make('aboutIcon2')->label('About Icon 2')->image()->enableOpen()
+                        //     ->columns(1)->directory('aboutImages')
+                        //     ->getUploadedFileNameForStorageUsing(
+                        //         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                        //             ->prepend(now()->timestamp),
+                        //     ),
+                    TextInput::make('aboutIcon1')->required()->maxLength(150),
+                    TextInput::make('aboutIcon2')->required()->maxLength(150),
                         ])->columns(2),
                 Tabs\Tab::make('About Images')
                 ->icon('heroicon-s-computer-desktop')

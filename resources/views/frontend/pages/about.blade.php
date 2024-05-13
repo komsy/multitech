@@ -30,13 +30,13 @@
                                 <div class="col-lg-8">
                                     <div class="d-flex mb-4">
                                         <div class="text-secondary">
-                                            <i class="fas fa-user-shield fa-3x"></i>
+                                            <i class="{{ $aboutUs->aboutIcon1 }} fa-3x"></i>
                                         </div>
                                         <h4 class="ms-3">{!! html_entity_decode ( $aboutUs->aboutText1) !!}</h4>
                                     </div>
                                     <div class="d-flex">
                                         <div class="text-secondary">
-                                            <i class="fas fa-users-cog fa-3x"></i>
+                                            <i class="{{ $aboutUs->aboutIcon2 }} fa-3x"></i>
                                         </div>
                                         <h4 class="ms-3">{!! html_entity_decode ( $aboutUs->aboutText2) !!}</h4>
                                     </div>
@@ -53,7 +53,7 @@
                                 <p class="text-dark mb-0"><i class="fas fa-check text-secondary me-1"></i> {!! html_entity_decode ( $aboutUs->aboutPoint4) !!}</p>
                             </div>
                         </div>
-                        <a class="btn btn-secondary d-inline-block py-3 px-5 me-2 flex-shrink-0 wow fadeInUp" data-wow-delay="0.1s" href="#">Discover More</a>
+                        <a class="btn btn-secondary d-inline-block py-3 px-5 me-2 flex-shrink-0 wow fadeInUp" data-wow-delay="0.1s" href="{{ route('about') }}">Discover More</a>
                     </div>
                 </div>
             </div>

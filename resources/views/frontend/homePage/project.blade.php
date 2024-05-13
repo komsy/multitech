@@ -22,14 +22,14 @@
                                     <a href="#" class="h4">{{ $project->heading }}</a>
                                     <p class="mb-0 mt-3">{!! html_entity_decode ( $project->description) !!}</p>
                                 </div>
-                                <a class="btn btn-primary py-2 px-4" href="#">Read More</a>
+                                {{-- <a class="btn btn-primary py-2 px-4" href="#">Read More</a> --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
                 <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <a class="btn btn-secondary py-3 px-5" href="#">Get a Quote</a>
+                    <a class="btn btn-secondary py-3 px-5" href="{{ route('contact') }}">Get a Quote</a>
                 </div>
             </div>
         </div>
