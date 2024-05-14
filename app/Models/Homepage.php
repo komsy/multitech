@@ -14,7 +14,8 @@ class Homepage extends Model
         'user_id',
         'header1',
         'header2',
-        'homepageImage',
+        'homepageImage1',
+        'homepageImage2',
         'whyChooseUsHeader1',
         'whyChooseUsHeader2',
         'serviceHeader1',
@@ -32,9 +33,9 @@ class Homepage extends Model
         'newsletterShow',
     ];
 
-    protected $casts = [
-        'homepageImage' => 'array'
-    ];  
+    // protected $casts = [
+    //     'homepageImage' => 'array'
+    // ];  
 
 
     public function user()

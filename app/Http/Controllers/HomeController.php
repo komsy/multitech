@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
         $this->companyDetails = CompanyProfile::first();
         $this->homepage = Homepage::first();
+
         $this->services = Service::select('serviceName', 'serviceHeading', 'serviceImage', 'serviceDescription')
             ->where('serviceStatus', 1)->get();
         $this->servicess=Service::select('serviceName',)->where('serviceStatus',1)->get();
@@ -49,7 +50,7 @@ class HomeController extends Controller
         $aboutUs = $this->aboutUs;   
         $projects=Project::select('projectName','heading','description','projectImage')->where('projectStatus',1)->get();
         $facts=Fact::select('icon','heading','number')->where('factStatus',1)->get();
-    //    dd($facts);
+    //    dd($homepage);
         return view('frontend.welcome',compact('companyDetails','homepage','testimonials','whyChooseUs','projects','services','aboutUs','facts'));
     }
     public function about()

@@ -38,7 +38,7 @@ class HomepageResource extends Resource
     protected static?string $navigationGroup= 'Page Setting';
 
     public static function form(Form $form): Form
-    {
+    { 
         return $form
             ->schema([
                 Section::make('Home Page')
@@ -47,8 +47,13 @@ class HomepageResource extends Resource
                     ->schema([
                         TextInput::make('header1')->label('Banner Heading')->required()->maxLength(100),
                         TextInput::make('header2')->label('Banner Sub-heading')->required()->maxLength(150), 
-                        FileUpload::make('homepageImage')->label('Carousel Images')->image()->enableOpen()
-                        ->columns(1)->multiple()->directory('homepageImages')
+                        FileUpload::make('homepageImage1')->label('Carousel Images')->image()->enableOpen()
+                        ->columns(1)->directory('homepageImages')->required()
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                ->prepend(now()->timestamp),),
+                        FileUpload::make('homepageImage2')->label('Carousel Images')->image()->enableOpen()
+                        ->columns(1)->directory('homepageImages')->required()
                         ->getUploadedFileNameForStorageUsing(
                             fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                 ->prepend(now()->timestamp),),
@@ -104,8 +109,9 @@ class HomepageResource extends Resource
                 BooleanColumn::make('whyChooseUsShow')->label('Why Choose Us Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
                 BooleanColumn::make('testmonyShow')->label('Testmonial Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
                 BooleanColumn::make('newsletterShow')->label('News letter Is Active')->toggleable()->toggledHiddenByDefault()->toggle(),
-                Tables\Columns\ImageColumn::make('homepageImage')->label('Homepage Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Home Page Image']),
-                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
+                Tables\Columns\ImageColumn::make('homepageImage1')->label('Homepage Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Home Page Image']),
+                Tables\Columns\ImageColumn::make('homepageImage2')->label('Homepage Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Home Page Image']),
+                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
     
             ])

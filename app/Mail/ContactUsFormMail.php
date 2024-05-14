@@ -8,8 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-
-class ContactUsFormMail extends Mailable implements ShouldQueue
+// implements ShouldQueue
+class ContactUsFormMail extends Mailable 
 {
     use Queueable, SerializesModels;
 

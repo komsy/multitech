@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('header1',100);
             $table->string('header2',150);
-            $table->longText('homepageImage');
+            $table->string('homepageImage1');
+            $table->string('homepageImage2');
             $table->string('whyChooseUsHeader1',50);
             $table->string('whyChooseUsHeader2',150);
             $table->string('serviceHeader1',50);

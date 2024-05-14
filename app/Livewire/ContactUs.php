@@ -50,7 +50,11 @@ class ContactUs extends Component
             // Mail::send('emails.customer',$message,function($message)use($email,$contactName){
             //     $message->to($email)->subject('Service Inquiry Submitted');
             //   });
-            Mail::to($email)->queue(new ContactUsFormMail($this->contactName, $this->contactEmail, $service));
+            // Send ACK email to client 
+            Mail::to($email)->send(new ContactUsFormMail($this->contactName, $this->contactEmail, $service));
+            //Send email to team    
+            Mail::to($email)->send(new TeamContactUsFormMail($this->contactName, $this->contactEmail, $validated));
+
         }catch(\Exception $e){
             Log::info($e);
             session()->flash('error', 'Oops ! Something went wrong');
