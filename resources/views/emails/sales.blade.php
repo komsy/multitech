@@ -312,25 +312,34 @@
                               <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-position:left top" width="100%" cellspacing="0" cellpadding="0" role="presentation">
                                 <tbody>
                                 <tr style="border-collapse:collapse">
-                                 <td align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px"><h1 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333">Hello, <strong> {{ $name }}  </strong></h1></td>
+                                 <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px"><h1 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333">Hello Team, </h1></td>
                                 </tr>
                                 <tr style="border-collapse:collapse">
-                                 <td align="left" style="padding:0;Margin:0;padding-right:35px;padding-left:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;text-align:center">We trust that you are doing well today.</p></td>
+                                 <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px"><p style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333">There has been a <strong> {{ $service }} </strong> inquiry from the website. Kindly get in touch with the client and advice on the way forward. </p></td>
                                 </tr>
                                 <tr style="border-collapse:collapse">
-                                 <td align="left" style="padding:0;Margin:0;padding-right:35px;padding-left:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;text-align:center">Thank you for reaching out to us! We've received your message and our team is already on it. We'll get back to you as soon as possible, typically within 24 hours.</p></td>
+                                 <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px"><p style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333">The details of the inquiry are below: </p></td>
                                 </tr>
+                                <tr style="border-collapse:collapse">
+                                 <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px"><p style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333">Client Name:  {{ $contactName }} <br> Service:  {{ $service }} <br> Message:  {{ $contactMessage }}</p></td>
+                                </tr>
+                                {{-- <tr style="border-collapse:collapse">
+                                 <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px"><p style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333">Message:  {{ $service }} </p></td>
+                                </tr> --}}
+                                {{-- <tr style="border-collapse:collapse">
+                                 <td align="left" style="padding:0;Margin:0;padding-right:35px;padding-left:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;text-align:center">Thank you for reaching out to us regarding <strong> {{ $service }} </strong>. We've received your message and our team is already on it. We'll get back to you as soon as possible, typically within 24 hours.</p></td>
+                                </tr> --}}
                                 <!-- <tr style="border-collapse:collapse">
                                  <td align="center" style="padding:0;Margin:0;padding-top:25px;padding-left:40px;padding-right:40px">
-                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666"><strong>Username: </strong>{{$email}}</p>
+                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666"><strong>Username: </strong>{{$contactEmail}}</p>
                                     <p style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;margin-right:14.5%;"><strong>Password: </strong>password</p>
 
                                 </td>
                                 </tr> -->
+                                
                                 <br>
                                 <tr style="border-collapse:collapse">
-                                 <td align="left" style="padding:0;Margin:0;padding-right:35px;padding-left:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666;text-align:center">If you have any urgent inquiries, feel free to contact us directly.</p></td>
-
+                                  <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px"><p style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333">You can also click <strong> <a href="#">here</a></strong>  to view it on the website.</p></td>
                                 </tr>
                                 <br>
                                 <tr align="left" style="border-collapse:collapse">

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use App\Mail\ContactUsFormMail;
+use App\Mail\TeamContactUsFormMail;
 
 class ContactUs extends Component
 {
@@ -37,23 +38,16 @@ class ContactUs extends Component
     {
         $validated = $this->validate();
         $email=$this->contactEmail;
-        $contactName=$this->contactName;
-        $message=[
-            'email'=>$email,
-            'name'=>$contactName,
-            'branch'=>$contactName,
-            ];
+        
+        $salesNumber = \App\Models\CompanyProfile::select('salesNumber')->first();
         $service = \App\Models\Service::select('serviceName')->findOrFail($this->service_id);
-        //dd($service->serviceName);
+        // dd($service);
         try{
         \App\Models\ContactUsForm::create($validated);
-            // Mail::send('emails.customer',$message,function($message)use($email,$contactName){
-            //     $message->to($email)->subject('Service Inquiry Submitted');
-            //   });
             // Send ACK email to client 
-            Mail::to($email)->send(new ContactUsFormMail($this->contactName, $this->contactEmail, $service));
+            Mail::to($email)->send(new ContactUsFormMail($this->contactName,$this->contactEmail, $service,$this->contactMessage, $salesNumber));
             //Send email to team    
-            Mail::to($email)->send(new TeamContactUsFormMail($this->contactName, $this->contactEmail, $validated));
+            Mail::to('koometest@gmail.com')->send(new TeamContactUsFormMail($this->contactName,$this->contactEmail, $service,$this->contactMessage, $salesNumber));
 
         }catch(\Exception $e){
             Log::info($e);

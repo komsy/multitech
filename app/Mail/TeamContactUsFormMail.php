@@ -8,8 +8,9 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-// implements ShouldQueue
-class ContactUsFormMail extends Mailable 
+use Illuminate\Support\Facades\Log;
+
+class TeamContactUsFormMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -38,7 +39,7 @@ class ContactUsFormMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.customer',
+            view: 'emails.sales',
             with: [
                 'contactName' => $this->contactName,
                 'contactEmail' => $this->contactEmail,
@@ -55,5 +56,3 @@ class ContactUsFormMail extends Mailable
         return [];
     }
 }
-
-

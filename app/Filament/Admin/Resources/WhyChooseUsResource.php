@@ -18,6 +18,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Textarea;
 
 class WhyChooseUsResource extends Resource
 {
@@ -46,7 +47,8 @@ class WhyChooseUsResource extends Resource
                     //     ),
                     TextInput::make('icon')->required()->maxLength(150),
                     TextInput::make('heading')->required()->maxLength(100),
-                    RichEditor::make('text'),
+                    // RichEditor::make('text'),
+                    Textarea::make('text') ->autosize(),
                     // TextInput::make('text')->required()->maxLength(255),
                 ])
                 ->columns(2)
