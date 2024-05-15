@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Contracts\HasTable;
 
 class ContactUsResource extends Resource
 {
@@ -54,6 +55,16 @@ class ContactUsResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('Sr No.')->getStateUsing(
+                    static function ($rowLoop, HasTable $livewire): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('header')->searchable(),
                 TextColumn::make('subHeading')->searchable()->html()->words(5),

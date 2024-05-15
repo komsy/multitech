@@ -19,6 +19,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Wizard;
+use Filament\Tables\Contracts\HasTable;
 
 class CompanyProfileResource extends Resource
 {
@@ -82,6 +83,16 @@ class CompanyProfileResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('Sr No.')->getStateUsing(
+                    static function ($rowLoop, HasTable $livewire): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable(),
                 TextColumn::make('companyName')->label('Company Name')->searchable(),
                 TextColumn::make('companyLogo')->label('')->searchable(),

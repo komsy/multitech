@@ -19,6 +19,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Contracts\HasTable;
 
 class ProjectResource extends Resource
 {
@@ -60,6 +61,16 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('Sr No.')->getStateUsing(
+                    static function ($rowLoop, HasTable $livewire): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('projectName')->searchable(),
                 TextColumn::make('heading')->searchable(),

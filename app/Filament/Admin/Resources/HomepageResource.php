@@ -22,6 +22,7 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Contracts\HasTable;
 
 class HomepageResource extends Resource
 {
@@ -91,6 +92,16 @@ class HomepageResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('Sr No.')->getStateUsing(
+                    static function ($rowLoop, HasTable $livewire): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable(),
                 TextColumn::make('header1')->label('Banner Heading')->searchable(),
                 TextColumn::make('header2')->label('Banner Sub-heading')->searchable(),

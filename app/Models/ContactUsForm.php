@@ -16,4 +16,8 @@ class ContactUsForm extends Model
         'contactEmail',
         'contactMessage'
     ];
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

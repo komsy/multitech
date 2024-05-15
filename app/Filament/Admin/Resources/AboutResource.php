@@ -21,6 +21,7 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Contracts\HasTable;
 
 class AboutResource extends Resource
 {
@@ -43,6 +44,16 @@ class AboutResource extends Resource
                 Tabs\Tab::make('Basic Texts')
                 ->icon('heroicon-s-document-text')
                     ->schema([
+                        TextColumn::make('Sr No.')->getStateUsing(
+                            static function ($rowLoop, HasTable $livewire): string {
+                                return (string) (
+                                    $rowLoop->iteration +
+                                    ($livewire->getTableRecordsPerPage() * (
+                                        $livewire->getTablePage() - 1
+                                    ))
+                                );
+                            }
+                        ),
                         TextInput::make('aboutHeading1')->required()->maxLength(100),
                         TextInput::make('aboutHeading2')->required()->maxLength(150),
                         Textarea::make('aboutDescription') ->autosize(),
@@ -108,6 +119,16 @@ class AboutResource extends Resource
     {  
         return $table
             ->columns([
+                TextColumn::make('Sr No.')->getStateUsing(
+                    static function ($rowLoop, HasTable $livewire): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('aboutHeading1')->label('Heading 1')->searchable()->words(3),
                 TextColumn::make('aboutHeading2')->label('Heading 2')->searchable()->words(3),
