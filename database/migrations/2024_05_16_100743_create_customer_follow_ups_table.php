@@ -18,7 +18,6 @@ return new class extends Migration
             $table->longText('customerNeed');
             $table->longText('remarks');
             $table->date('reminder')->nullable();
-            $table->tinyInteger('status')->comment('0 for Terminated,1 for Active, 2 for Passive, 3 for Closed ')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -19,6 +19,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Card;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\SelectColumn;
+use Filament\Tables\Filters\SelectFilter;
 
 class ContactUsFormResource extends Resource
 {
@@ -49,6 +51,13 @@ class ContactUsFormResource extends Resource
                         TextInput::make('contactNumber')->required()->maxLength(20)->readonly()->columnSpan(['md'=>4]),
                         TextInput::make('contactEmail')->required()->maxLength(30)->readonly()->columnSpan(['md'=>4]),
                         Textarea::make('contactMessage')->required()->columnSpanFull()->readonly()->columnSpan(['md'=>6]),
+                        Select::make('status')->required()
+                            ->options([
+                                1 => 'Active',
+                                2 => 'Passive',
+                                3 => 'Closed',
+                                0 => 'Terminated',
+                        ]),
                     ])
                     ->columns(['md'=>12])
                     ->columnSpan('full'),
@@ -71,12 +80,28 @@ class ContactUsFormResource extends Resource
                 ),
                 TextColumn::make('service.serviceName')->sortable()->searchable(),
                 TextColumn::make('contactName')->searchable(),
-                TextColumn::make('contactNumber')->searchable(),
-                TextColumn::make('contactEmail')->searchable(),
-                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable(),
+                TextColumn::make('contactNumber')->searchable()->copyable()
+                ->copyMessage('Phone Number copied')->copyMessageDuration(1500),
+                TextColumn::make('contactEmail')->searchable()->copyable()
+                ->copyMessage('Email address copied')->copyMessageDuration(1500),
+                SelectColumn::make('status')
+                    ->options([
+                        1 => 'Active',
+                        2 => 'Passive',
+                        3 => 'Closed',
+                        0 => 'Terminated',
+                    ]),
+                TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
             ])
             ->filters([
+                SelectFilter::make('Follow Up Status')
+                    ->options([
+                        1 => 'Active',
+                        2 => 'Passive',
+                        3 => 'Closed',
+                        0 => 'Terminated',
+                    ])->attribute('status'),
                 Tables\Filters\TrashedFilter::make()
             ])
             ->actions([

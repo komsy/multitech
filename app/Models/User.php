@@ -16,10 +16,11 @@ use Filament\Facades\Filament;
 use Spatie\Permission\Traits\HasRoles;
 use Filament\Models\Contracts\FilamentUser;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements  HasTenants,FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles,HasPanelShield ;
+    use HasApiTokens, HasFactory, Notifiable,HasRoles,HasPanelShield,SoftDeletes ;
 
 
     protected $fillable = [

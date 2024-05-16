@@ -36,10 +36,10 @@ class UserResource extends Resource
                 Card::make()
                     ->schema([
                     TextInput::make('name')
-                        ->required()
+                        ->required()->unique(ignoreRecord: true)
                         ->maxLength(255),
                     TextInput::make('email')
-                        ->email()
+                        ->email()->unique(ignoreRecord: true)
                         ->required()
                         ->maxLength(255),
                     //DateTimePicker::make('email_verified_at'),
@@ -64,8 +64,8 @@ class UserResource extends Resource
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('email_verified_at')
                     ->dateTime('M j, Y')->sortable()->toggleable()->toggledHiddenByDefault(),
-                TextColumn::make('last_seen')
-                    ->dateTime('M j, Y')->sortable()->toggleable()->toggledHiddenByDefault(),
+                // TextColumn::make('last_seen')
+                //     ->dateTime('M j, Y')->sortable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('deleted_at')
                     ->dateTime('M j, Y')->sortable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('created_at')
@@ -87,14 +87,18 @@ class UserResource extends Resource
                 })
             ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make()
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
+                ]),
             ]);
     }
     
