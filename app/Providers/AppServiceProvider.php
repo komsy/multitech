@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         LogViewer::auth(function ($request) {
             return $request->user()
                 && in_array($request->user()->email, [
-                    'john@example.com',
+                    'admin@gmail.com',
                 ]);
         });
            // SET GLOBAL TOGGLE FOR STATUS
