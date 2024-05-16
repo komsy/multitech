@@ -41,6 +41,8 @@ class CompanyProfileResource extends Resource
             ->schema([
                 Wizard::make([
                     Wizard\Step::make('Company Information')
+                        ->description('Basic Company details')
+                        ->icon('heroicon-o-book-open')
                         ->schema([
                         TextInput::make('companyName')
                         ->autocapitalize('words')->required()->maxLength(150),
@@ -61,6 +63,8 @@ class CompanyProfileResource extends Resource
                             TextInput::make('location2')->prefixIcon('heroicon-c-map-pin')->maxLength(255)->default(null),
                     ])->columns(2),
                     Wizard\Step::make('Social Medias')
+                    ->description('Company Social Media handles')
+                    ->icon('heroicon-s-at-symbol')
                     ->schema([
                             TextInput::make('facebookProfile')->maxLength(255)->placeholder('https://multitech.co.ke')->url()
                                 ->suffixIcon('heroicon-m-globe-alt')->default(null),
@@ -75,7 +79,7 @@ class CompanyProfileResource extends Resource
                             TextInput::make('tiktokProfile')->maxLength(255)->placeholder('https://multitech.co.ke')->url()
                             ->suffixIcon('heroicon-m-globe-alt')->default(null),
                         ])->columns(2)
-                ])->columnSpanFull()
+                ])->columnSpanFull()->skippable()
             ]);
     }
 

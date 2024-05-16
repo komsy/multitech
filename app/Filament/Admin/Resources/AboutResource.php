@@ -22,6 +22,7 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Forms\Components\Placeholder;
 
 class AboutResource extends Resource
 {
@@ -44,16 +45,6 @@ class AboutResource extends Resource
                 Tabs\Tab::make('Basic Texts')
                 ->icon('heroicon-s-document-text')
                     ->schema([
-                        TextColumn::make('Sr No.')->getStateUsing(
-                            static function ($rowLoop, HasTable $livewire): string {
-                                return (string) (
-                                    $rowLoop->iteration +
-                                    ($livewire->getTableRecordsPerPage() * (
-                                        $livewire->getTablePage() - 1
-                                    ))
-                                );
-                            }
-                        ),
                         TextInput::make('aboutHeading1')->required()->maxLength(100),
                         TextInput::make('aboutHeading2')->required()->maxLength(150),
                         Textarea::make('aboutDescription') ->autosize(),
@@ -79,6 +70,9 @@ class AboutResource extends Resource
                         //         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                         //             ->prepend(now()->timestamp),
                         //     ),
+                        
+                    Placeholder::make('')
+                       ->content("Search the icons from: https://fontawesome.com/v4/icons/")->columnSpanFull(),
                     TextInput::make('aboutIcon1')->required()->maxLength(150),
                     TextInput::make('aboutIcon2')->required()->maxLength(150),
                         ])->columns(2),
@@ -132,8 +126,8 @@ class AboutResource extends Resource
                 TextColumn::make('user.name')->sortable()->searchable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('aboutHeading1')->label('Heading 1')->searchable()->words(3),
                 TextColumn::make('aboutHeading2')->label('Heading 2')->searchable()->words(3),
-                TextColumn::make('aboutText1')->label('Point 1')->searchable()->words(5),
-                TextColumn::make('aboutText2')->label('Point 2')->searchable()->words(5),
+                TextColumn::make('aboutText1')->label('Text 1')->searchable()->words(5)->toggleable()->toggledHiddenByDefault(),
+                TextColumn::make('aboutText2')->label('Text 2')->searchable()->words(5)->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('aboutPoint1')->label('Point 1')->searchable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('aboutPoint2')->label('Point 2')->searchable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('aboutPoint3')->label('Point 3')->searchable()->toggleable()->toggledHiddenByDefault(),

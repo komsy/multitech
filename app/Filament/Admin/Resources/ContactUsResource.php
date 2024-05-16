@@ -44,7 +44,7 @@ class ContactUsResource extends Resource
                             ->required()->maxLength(100),
                         Textarea::make('text')
                             ->required()->columnSpanFull(),
-                        Textarea::make('map')
+                        Textarea::make('map')->readOnly()
                             ->required()->columnSpanFull(),
                         Hidden::make('user_id')->default(auth()->id()),
                     ])->columns(2)

@@ -39,15 +39,16 @@ class ContactUs extends Component
         $validated = $this->validate();
         $email=$this->contactEmail;
         
-        $salesNumber = \App\Models\CompanyProfile::select('salesNumber')->first();
+        $salesNumber = \App\Models\CompanyProfile::select('salesNumber','companyEmail','salesEmail')->first();
         $service = \App\Models\Service::select('serviceName')->findOrFail($this->service_id);
-        // dd($service);
+       // dd($salesNumber);
+        $emails=[$salesNumber->companyEmail, $salesNumber->salesEmail];
         try{
         \App\Models\ContactUsForm::create($validated);
             // Send ACK email to client 
             Mail::to($email)->send(new ContactUsFormMail($this->contactName,$this->contactEmail, $service,$this->contactMessage, $salesNumber));
             //Send email to team    
-            Mail::to('koometest@gmail.com')->send(new TeamContactUsFormMail($this->contactName,$this->contactEmail, $service,$this->contactMessage, $salesNumber));
+            Mail::to($emails)->send(new TeamContactUsFormMail($this->contactName,$this->contactEmail, $service,$this->contactMessage, $salesNumber));
 
         }catch(\Exception $e){
             Log::info($e);

@@ -20,6 +20,7 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Forms\Components\Placeholder;
 
 class WhyChooseUsResource extends Resource
 {
@@ -45,7 +46,10 @@ class WhyChooseUsResource extends Resource
                     //     ->getUploadedFileNameForStorageUsing(
                     //         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                     //             ->prepend(now()->timestamp),
-                    //     ),
+                    //     ),    
+                    Placeholder::make('')
+                    ->content("Search the icons from: https://fontawesome.com/v4/icons/")->columnSpanFull(),
+                 
                     TextInput::make('icon')->required()->maxLength(150),
                     TextInput::make('heading')->required()->maxLength(100),
                     // RichEditor::make('text'),

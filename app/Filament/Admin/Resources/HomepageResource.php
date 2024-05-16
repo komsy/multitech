@@ -44,6 +44,7 @@ class HomepageResource extends Resource
             ->schema([
                 Section::make('Home Page')
                     ->description('Set what to display on the page Banner')
+                    ->icon('heroicon-s-home')
                     ->columns(2)->compact()
                     ->schema([
                         TextInput::make('header1')->label('Banner Heading')->required()->maxLength(100),
@@ -62,6 +63,7 @@ class HomepageResource extends Resource
 
                 Section::make('Text setting')
                     ->description('Set the text to display on specific sections of the Home page')
+                    ->icon('heroicon-s-document-text')
                     ->columns(3)->compact()
                     ->schema([
                         TextInput::make('whyChooseUsHeader1')->label('Why Choose Us H1')->required()->maxLength(50),
@@ -76,6 +78,7 @@ class HomepageResource extends Resource
 
                 Section::make('Visibility')
                     ->description('Show/Hide specific pages on Home page')
+                    ->icon('heroicon-s-eye')
                     ->columns(2)->compact()
                     ->schema([
                         Toggle::make('topbarShow')->label('Topbar')->required()->default(true),
@@ -134,7 +137,7 @@ class HomepageResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
