@@ -27,10 +27,12 @@ class AppPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
+            // ->default()
             ->id('app')
             ->path('app')
             // ->login()
+            // ->login(\Filament\Pages\Auth\Login::class)
+                ->registration()
             ->colors([
                 'danger' => Color::Red,
                 'gray' => Color::Slate,

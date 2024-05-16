@@ -48,7 +48,7 @@ return [
     |
     */
 
-    'back_to_system_url' => config('app.url', null),
+    'back_to_system_url' => config('log.url', 'http://multitech.test/admin'),
 
     'back_to_system_label' => null, // Displayed by default: "Back to {{ app.name }}"
 
