@@ -31,7 +31,6 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('app')
             // ->login()
-            ->login(\Filament\Pages\Auth\Login::class)
             ->colors([
                 'danger' => Color::Red,
                 'gray' => Color::Slate,

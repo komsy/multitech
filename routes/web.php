@@ -30,7 +30,7 @@ use \App\Http\Controllers\HomeController;
 
 
 Route::get('/login', function () {
-    return redirect('/app/login');
+    return redirect('/admin/login');
 });
 
 Route::redirect('/laravel/login', '/login')->name('login');

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ContactUsForm extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
     public $fillable = [
         'service_id',
@@ -19,5 +20,15 @@ class ContactUsForm extends Model
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function customerFollowUp()
+    {
+        return $this->hasMany(CustomerFollowUp::class);
     }
 }
