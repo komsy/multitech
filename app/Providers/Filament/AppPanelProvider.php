@@ -32,7 +32,7 @@ class AppPanelProvider extends PanelProvider
             ->path('app')
             // ->login()
             // ->login(\Filament\Pages\Auth\Login::class)
-                ->registration()
+            // ->registration()
             ->colors([
                 'danger' => Color::Red,
                 'gray' => Color::Slate,
@@ -77,6 +77,9 @@ class AppPanelProvider extends PanelProvider
             ])
             ->tenant(Team::class, ownershipRelationship: 'team', slugAttribute: 'slug')
             ->tenantRegistration(RegisterTeam::class)
-            ->tenantProfile(EditTeamProfile::class);
+            ->tenantProfile(EditTeamProfile::class)
+            ->plugins([
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+            ]);
     }
 }

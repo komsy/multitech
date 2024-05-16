@@ -11,7 +11,7 @@ use App\Models\About;
 use App\Models\Fact;
 use App\Models\CompanyProfile;
 use App\Models\Homepage;
-
+use Cache;
 class HomeController extends Controller
 {
     
@@ -26,17 +26,38 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->companyDetails = CompanyProfile::first();
-        $this->homepage = Homepage::first();
+        // $this->companyDetails = CompanyProfile::first();
+        // $this->homepage = Homepage::first();
+        // Cache company details for 60 minutes
+        $this->companyDetails = Cache::remember('companyDetails', 60 * 5, function() {
+            return CompanyProfile::first();
+        });
 
-        $this->services = Service::select('serviceName', 'serviceHeading', 'serviceImage', 'serviceDescription')
+        // Cache homepage for 10 minutes
+        $this->homepage = Cache::remember('homepage', 60 * 5, function() {
+            return Homepage::first();
+        });
+        $this->services = Cache::remember('services', 60 * 5, function() {
+            return Service::select('serviceName', 'serviceHeading', 'serviceImage', 'serviceDescription')
             ->where('serviceStatus', 1)->get();
-        $this->servicess=Service::select('serviceName',)->where('serviceStatus',1)->get();
-        $this->whyChooseUs = WhyChooseUs::select('icon', 'heading', 'text')->get();
-        $this->aboutUs = About::where('aboutStatus', 1)->first();
-        $this->facts = Fact::select('icon', 'heading', 'number')->where('factPageShow', 1)->get();
-        $this->testimonials = Testmonials::select('name', 'designation', 'testmonialImage', 'testimonial')
+        });
+        $this->servicess = Cache::remember('servicess', 60 * 5, function() {
+            return Service::select('serviceName',)->where('serviceStatus',1)->get();
+        });
+        $this->whyChooseUs = Cache::remember('whyChooseUs', 60 * 5, function() {
+            return WhyChooseUs::select('icon', 'heading', 'text')->get();
+        });
+        $this->aboutUs = Cache::remember('aboutUs', 60 * 5, function() {
+            return About::where('aboutStatus', 1)->first();
+        });
+        $this->facts = Cache::remember('facts', 60 * 5, function() {
+            return Fact::select('icon', 'heading', 'number')->where('factPageShow', 1)->get();
+        });
+        $this->testimonials = Cache::remember('testimonials', 60 * 5, function() {
+            return Testmonials::select('name', 'designation', 'testmonialImage', 'testimonial')
             ->where('testmonialStatus', 1)->get();
+        });
+
     }
 
     public function welcome()
