@@ -7,9 +7,9 @@
                             <img src="{{ asset('/storage/'.$aboutUs->aboutImage1)}}" class="img-1 img-fluid w-50" alt="About Image">
                         <img src="{{ asset('/storage/'.$aboutUs->aboutImage2)}}" class="img-2 img-fluid w-50" alt="About Image">
                         {{-- <img src="img/about.jpg" class="img-1 img-fluid w-50"  alt=""> 
-                        <img src="img/about-3.jpg" class="img-2 img-fluid w-50"  alt="">--}}
+                        <img src="img/about-3.jpg" class="img-2 img-fluid w-50"  alt="">--}} 
                         <div class="about-item-image-content">
-                            <img src="{{ asset('/storage/'.$aboutUs->aboutImage3)}}" cclass="img-fluid w-100 h-100" style="object-fit: cover;"  alt="About Image">
+                            <img src="{{ asset('/storage/'.$aboutUs->aboutImage3)}}" cclass="img-fluid w-50 h-50" style="object-fit: cover;"  alt="About Image">
                             {{-- <img src="img/about-1.png" class="img-fluid w-100 h-100" style="object-fit: cover;" alt=""> --}}
                         </div>
                     </div>

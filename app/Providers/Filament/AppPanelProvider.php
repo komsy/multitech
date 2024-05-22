@@ -77,9 +77,9 @@ class AppPanelProvider extends PanelProvider
             ])
             ->tenant(Team::class, ownershipRelationship: 'team', slugAttribute: 'slug')
             ->tenantRegistration(RegisterTeam::class)
-            ->tenantProfile(EditTeamProfile::class)
-            ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
-            ]);
+            ->tenantProfile(EditTeamProfile::class);
+            // ->plugins([
+            //     \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+            // ]);
     }
 }

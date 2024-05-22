@@ -5,7 +5,7 @@
             <div class="row gx-0">
                 @foreach ($facts as $fact)
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="bg-secondary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
+                    <div class="bg-warning shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
                         <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
                             <i class="{{ $fact->icon }} text-secondary"></i>
                         </div>

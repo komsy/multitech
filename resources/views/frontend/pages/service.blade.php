@@ -2,8 +2,8 @@
     <div class="container-fluid services py-5 mb-5">
         <div class="container">
             <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                <h5 class="text-secondary">Our Services</h5>
-                <h1>Services Built Specifically For Your Business</h1>
+                <h5 class="text-secondary">{{ $homepage->serviceHeader1 }} </h5>
+                <h1>{{ $homepage->serviceHeader2 }} </h1>
             </div>
             <div class="row g-5 services-inner">
                 @foreach ($services as $service)

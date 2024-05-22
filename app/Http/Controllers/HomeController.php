@@ -29,31 +29,35 @@ class HomeController extends Controller
         // $this->companyDetails = CompanyProfile::first();
         // $this->homepage = Homepage::first();
         // Cache company details for 60 minutes
-        $this->companyDetails = Cache::remember('companyDetails', 60 * 5, function() {
+        $this->companyDetails = Cache::remember('companyDetails',env('APP_CACHE', '60'), function() {
             return CompanyProfile::first();
         });
 
         // Cache homepage for 10 minutes
-        $this->homepage = Cache::remember('homepage', 60 * 5, function() {
+        $this->homepage = Cache::remember('homepage',env('APP_CACHE', '60'), function() {
             return Homepage::first();
         });
-        $this->services = Cache::remember('services', 60 * 5, function() {
+        $this->services = Cache::remember('services',env('APP_CACHE', '60'), function() {
             return Service::select('serviceName', 'serviceHeading', 'serviceImage', 'serviceDescription')
             ->where('serviceStatus', 1)->get();
         });
-        $this->servicess = Cache::remember('servicess', 60 * 5, function() {
+        $this->servicess = Cache::remember('servicess',env('APP_CACHE', '60'), function() {
             return Service::select('serviceName',)->where('serviceStatus',1)->get();
         });
-        $this->whyChooseUs = Cache::remember('whyChooseUs', 60 * 5, function() {
+        $this->whyChooseUs = Cache::remember('whyChooseUs',env('APP_CACHE', '60'), function() {
             return WhyChooseUs::select('icon', 'heading', 'text')->get();
         });
-        $this->aboutUs = Cache::remember('aboutUs', 60 * 5, function() {
+        $this->aboutUs = Cache::remember('aboutUs',env('APP_CACHE', '60'), function() {
             return About::where('aboutStatus', 1)->first();
         });
-        $this->facts = Cache::remember('facts', 60 * 5, function() {
-            return Fact::select('icon', 'heading', 'number')->where('factPageShow', 1)->get();
+        $query=Fact::select('icon', 'heading', 'number');
+        $this->facts = Cache::remember('facts', env('APP_CACHE', '60'), function() use ($query) {
+            return $query->clone()->where('factPageShow', 1)->get();
         });
-        $this->testimonials = Cache::remember('testimonials', 60 * 5, function() {
+        $this->factss = Cache::remember('factss', env('APP_CACHE', '60'), function()  use ($query){
+            return $query->clone()->where('factStatus', 1)->get();
+        });
+        $this->testimonials = Cache::remember('testimonials',env('APP_CACHE', '60'), function() {
             return Testmonials::select('name', 'designation', 'testmonialImage', 'testimonial')
             ->where('testmonialStatus', 1)->get();
         });

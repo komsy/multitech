@@ -1,41 +1,23 @@
-@extends('backend.layouts.error_app')
+@extends('layouts.errorpage')
+@section('code', '405 😭')
 
+@section('title', __('Page Not Found'))
 @section('content')
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Error Redirection</li>
-    </ol>
-    <div class="container-fluid">
-        <div class="animated fadeIn">
-            @include('coreui-templates::common.errors')
-            @include('flash::message')
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        {{ $error }}<br>
-                    @endforeach
+
+        <div class="container-xxl py-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                        <h1 class="display-1">405</h1>
+                        <h1 class="mb-4">Page Not Found</h1>
+                        <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>
+                        <a class="btn btn-primary py-3 px-5" href="{{ url('/') }}">Go Back To Home</a>
+                    </div>
                 </div>
-            @endif
-             <div class="row">
-                 <div class="col-lg-12">
-                     <div class="card card-accent-info">
-                             <div class="card-header" style="height:50px;">
-                                 <i class="fa fa-align-justify"></i>
-                                 Error 405
-                             <a class="btn btn-danger text-white pull-right" href="{{ route('home') }}"><i class="fa fa-chevron-left"></i> Go Home</a>
-                             </div>
-                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3 col-md-3"></div>
-                                    <div class="form-group col-sm-6 col-md-6"  >  
-                                        <!-- <input type="text" disabled class="form-control bg-warning text-center centered" value="Sorry, Operation failed contact Admin!" style="color:black;" > -->
-                                    <img src="{{ asset('/public/images/account/405.gif') }}" style="margin-top:-1rem;" >    
-                                            
-                                    </div>
-                                </div>                                
-                             </div>
-                     </div>
-                  </div>
-             </div>
-         </div>
-    </div>
+            </div>
+        </div>
+    
 @endsection
+
+

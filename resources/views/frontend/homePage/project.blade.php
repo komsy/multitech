@@ -3,8 +3,8 @@
     <div class="container-fluid project py-5">
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <p class="text-uppercase text-secondary fs-5 mb-0">Our Projects</p>
-                <h2 class="display-4 text-capitalize mb-3">Recent Completed Projects</h2>
+                <p class="text-uppercase text-secondary fs-5 mb-0">{{ $homepage->projectHeader1 }}</p>
+                <h2 class="display-4 text-capitalize mb-3">{{ $homepage->projectHeader2 }}</h2>
             </div>
             <div class="row g-5">
                 @foreach ($projects as $project)

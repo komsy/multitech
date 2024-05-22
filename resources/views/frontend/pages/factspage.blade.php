@@ -20,7 +20,7 @@
                     </div>
                     @endforeach
                     <div class="col-12 text-center pt-4 wow fadeInUp" data-wow-delay="0.9s">
-                        <a class="counter-btn btn btn-secondary py-3 px-5" href="#">Join With Us</a>
+                        <a class="counter-btn btn btn-secondary py-3 px-5" href="{{ route('contact') }}">Join With Us</a>
                     </div>
                 </div>
             </div>
