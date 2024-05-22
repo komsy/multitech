@@ -21,6 +21,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Support\Str;
 
 class ContactUsFormResource extends Resource
 {
@@ -81,9 +82,15 @@ class ContactUsFormResource extends Resource
                 TextColumn::make('service.serviceName')->sortable()->searchable(),
                 TextColumn::make('contactName')->searchable(),
                 TextColumn::make('contactNumber')->searchable()->copyable()
-                ->copyMessage('Phone Number copied')->copyMessageDuration(1500),
+                ->copyMessage('Phone Number copied')->copyMessageDuration(1500)
+                    ->formatStateUsing(function ($state) {
+                        return Str::mask($state, '*', 2, 5);
+                    }),
                 TextColumn::make('contactEmail')->searchable()->copyable()
-                ->copyMessage('Email address copied')->copyMessageDuration(1500),
+                ->copyMessage('Email address copied')->copyMessageDuration(1500)
+                    ->formatStateUsing(function ($state) {
+                        return Str::mask($state, '*', 2, 5);
+                    }),
                 SelectColumn::make('status')
                     ->options([
                         1 => 'Active',

@@ -15,7 +15,7 @@
         <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active text-secondary">{{ $activePage }}</li>
+            <li class="breadcrumb-item active text-warning">{{ $activePage }}</li>
         </ol>    
     </div>
 </div>

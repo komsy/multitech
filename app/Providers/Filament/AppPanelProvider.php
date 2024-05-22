@@ -21,6 +21,7 @@ use App\Filament\Pages\App\Tenancy\EditTeamProfile;
 use App\Filament\Pages\App\Tenancy\RegisterTeam;
 use App\Models\Team;
 use Filament\Navigation\MenuItem;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -79,7 +80,22 @@ class AppPanelProvider extends PanelProvider
             ->tenantRegistration(RegisterTeam::class)
             ->tenantProfile(EditTeamProfile::class);
             // ->plugins([
-            //     \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+            //     FilamentShieldPlugin::make()
+            //         ->gridColumns([
+            //             'default' => 1,
+            //             'sm' => 2,
+            //             'lg' => 3
+            //         ])
+            //         ->sectionColumnSpan(1)
+            //         ->checkboxListColumns([
+            //             'default' => 1,
+            //             'sm' => 2,
+            //             'lg' => 4,
+            //         ])
+            //         ->resourceCheckboxListColumns([
+            //             'default' => 1,
+            //             'sm' => 2,
+            //         ]),
             // ]);
     }
 }

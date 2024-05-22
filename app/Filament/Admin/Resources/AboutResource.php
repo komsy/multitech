@@ -79,25 +79,25 @@ class AboutResource extends Resource
                 Tabs\Tab::make('About Images')
                 ->icon('heroicon-s-computer-desktop')
                     ->schema([
-                        FileUpload::make('aboutImage1')->label('About Image 1')->image()->enableOpen()
+                        FileUpload::make('aboutImage1')->label('About Image 1')->image()->enableOpen()->required()
                             ->columns(1)->directory('aboutImages')
                             ->getUploadedFileNameForStorageUsing(
                                 fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                     ->prepend(now()->timestamp),
                             ),
-                        FileUpload::make('aboutImage2')->label('About Image 2')->image()->enableOpen()
+                        FileUpload::make('aboutImage2')->label('About Image 2')->image()->enableOpen()->required()
                             ->columns(1)->directory('aboutImages')
                             ->getUploadedFileNameForStorageUsing(
                                 fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                     ->prepend(now()->timestamp),
                             ),
-                        FileUpload::make('aboutImage3')->label('About Image 3')->image()->enableOpen()
+                        FileUpload::make('aboutImage3')->label('About Image 3')->image()->enableOpen()->required()
                             ->columns(1)->directory('aboutImages')
                             ->getUploadedFileNameForStorageUsing(
                                 fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                     ->prepend(now()->timestamp),
                             ),
-                        FileUpload::make('aboutImage4')->label('About Image 4')->image()->enableOpen()
+                        FileUpload::make('aboutImage4')->label('About Image 4')->image()->enableOpen()->required()
                             ->columns(1)->directory('aboutImages')
                             ->getUploadedFileNameForStorageUsing(
                                 fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())

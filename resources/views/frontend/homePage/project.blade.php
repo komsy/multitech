@@ -3,7 +3,7 @@
     <div class="container-fluid project py-5">
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <p class="text-uppercase text-secondary fs-5 mb-0">{{ $homepage->projectHeader1 }}</p>
+                <p class="text-uppercase text-warning fs-5 mb-0">{{ $homepage->projectHeader1 }}</p>
                 <h2 class="display-4 text-capitalize mb-3">{{ $homepage->projectHeader2 }}</h2>
             </div>
             <div class="row g-5">
@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="project-content mb-4">
-                                    <p class="fs-5 text-secondary mb-2">{{ $project->projectName }}</p>
+                                    <p class="fs-5 text-warning mb-2">{{ $project->projectName }}</p>
                                     <a href="#" class="h4">{{ $project->heading }}</a>
                                     <p class="mb-0 mt-3">{!! html_entity_decode ( $project->description) !!}</p>
                                 </div>
@@ -29,7 +29,7 @@
                 </div>
                 @endforeach
                 <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                    <a class="btn btn-secondary py-3 px-5" href="{{ route('contact') }}">Get a Quote</a>
+                    <a class="btn btn-warning py-3 px-5" href="{{ route('contact') }}">Get a Quote</a>
                 </div>
             </div>
         </div>

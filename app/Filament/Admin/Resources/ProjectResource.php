@@ -75,7 +75,7 @@ class ProjectResource extends Resource
                 TextColumn::make('projectName')->searchable(),
                 TextColumn::make('heading')->searchable(),
                 TextColumn::make('description')->searchable()->label('Project Desc')->html()->words(5),
-                Tables\Columns\ImageColumn::make('projectImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Testmonial Image']),
+                Tables\Columns\ImageColumn::make('projectImage')->label('Image')->circular()->toggleable()->extraImgAttributes(['title' => 'Project Image']),
                 Tables\Columns\BooleanColumn::make('projectStatus')->label('Is Active')->toggleable()->toggle(),
                 TextColumn::make('created_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('updated_at')->dateTime('d-M-Y')->toggleable()->toggledHiddenByDefault(),

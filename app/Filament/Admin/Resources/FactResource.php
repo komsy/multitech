@@ -54,8 +54,8 @@ class FactResource extends Resource
                     TextInput::make('heading')->required()->maxLength(100),
                     TextInput::make('number')->required()->numeric(),
                     Hidden::make('user_id')->default(auth()->id()),
-                    Toggle::make('factPageShow')->required()->default(true),
-                    Toggle::make('factStatus')->required()->default(true),
+                    Toggle::make('factPageShow')->required()->default(false),
+                    Toggle::make('factStatus')->required()->default(false),
                 ])->columns(2)
             ]);
     }
@@ -63,6 +63,8 @@ class FactResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->heading('Facts')
+        ->description('Ensure Show/Hide are 4 while Active are 3 in total')
             ->columns([
                 TextColumn::make('Sr No.')->getStateUsing(
                     static function ($rowLoop, HasTable $livewire): string {

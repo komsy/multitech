@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
 use Filament\Pages\Page;
+use Illuminate\Support\Str;
 
 class UserResource extends Resource
 {
@@ -61,7 +62,12 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->searchable(),
-                TextColumn::make('email')->searchable(),
+                TextColumn::make('email')
+                    ->searchable()
+                    ->formatStateUsing(function ($state) {
+                        return Str::mask($state, '*', 2, 5);
+                    }),
+                //TextColumn::make('email')->searchable(),
                 TextColumn::make('email_verified_at')
                     ->dateTime('M j, Y')->sortable()->toggleable()->toggledHiddenByDefault(),
                 // TextColumn::make('last_seen')

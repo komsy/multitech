@@ -23,7 +23,7 @@ $services=\App\Models\Service::select('serviceName',)->where('serviceStatus',1)-
                 <div class="col-md-6 col-lg-4">
                     <div class="bg-primary rounded p-4">
                         <a href="index.html"><h1 class="text-white text-uppercase mb-3">{{ explode(' ', env('APP_NAME', 'Multitech Solutions (K) Ltd'))[0] }}</h1></a>
-                        <p class="text-white mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum</p>
+                        <p class="text-white mb-0">Empowering Your Business with Innovative IT Solutions.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
